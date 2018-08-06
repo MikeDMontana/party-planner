@@ -28,9 +28,9 @@ module.exports = function validateRegisterInput(data) {
     errors.password = 'Password must have 6 chars';
   }
 
-  if(!Validator.isLength(data.password, data.password_confirm)) {
-    errors.password_confirm = 'Password and Confirm Password must match';
-  }
+  // if(!Validator.isLength(data.password, data.password_confirm)) {
+  //   errors.password_confirm = 'Password and Confirm Password must match';
+  // }
 
   if(Validator.isEmpty(data.password_confirm)) {
     errors.password_confirm = 'Password is required';
