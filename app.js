@@ -20,9 +20,9 @@ app.use(bodyParser.json());
 
 app.use('/api/users', users); //API calls
 
-// app.get('/', function(req, res) {
-//   res.send('hello');
-// });
+app.get('/', function(req, res) {
+  res.send('hello');
+});
 
 const PORT = process.env.PORT || 5000;
 
