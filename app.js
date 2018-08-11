@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const config = require('./db');
+const path = require('path');
 
 const users = require('./routes/user');
 
