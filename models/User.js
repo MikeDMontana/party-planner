@@ -1,5 +1,5 @@
 
-
+// Old exports below keep for notes:
 //
 // module.exports = {
 //   User: mongoose.model('users', UserSchema),
@@ -7,6 +7,7 @@
 //   // Meal: mongoose.model('Meal', MealSchema),
 //   // Recipe: mongoose.model('Recipe', RecipeSchema)
 // };
+
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
