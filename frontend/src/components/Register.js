@@ -5,6 +5,12 @@ import { withRouter } from 'react-router-dom';
 import { registerUser } from '../actions/authentication';
 import classnames from 'classnames';
 
+import orange from '../images/orange.png';
+import grapes from '../images/grapes.png';
+import carrot from '../images/carrot.png';
+
+const images = [orange, grapes, carrot];
+
 class Register extends Component {
   constructor() {
     super();
@@ -13,16 +19,26 @@ class Register extends Component {
       email: '',
       password: '',
       password_confirm: '',
+      avatar_select: 0,
+      images: [],
       errors: {}
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleAvatarChange = this.handleAvatarChange.bind(this);
   }
 
   handleInputChange(e) {
     this.setState({
       [e.target.name]: e.target.value
-    })
+    });
+  }
+
+  handleAvatarChange(idx, e) {
+    const value = idx;
+    this.setState({
+      avatar_select: value
+    });
   }
 
   handleSubmit(e) {
@@ -31,7 +47,8 @@ class Register extends Component {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      password_confirm: this.state.password_confirm
+      password_confirm: this.state.password_confirm,
+      avatar: this.state.avatar_select
     }
     this.props.registerUser(user, this.props.history);
   }
@@ -55,6 +72,7 @@ class Register extends Component {
 
   render() {
     const { errors } = this.state;
+    console.log(this.state.avatar_select);
     return(
       <div className="container" style={{ marginTop: '50px', width: '700px'}}>
       <h2 style={{marginBottom: '40px'}}>Registration</h2>
@@ -111,6 +129,19 @@ class Register extends Component {
             />
             {errors.password_confirm && (<div className="invalid-feedback"> {errors.password_confirm}</div>)}
         </div>
+        <div className="avatar-preview">
+          <ul>
+            {images.map((image, index) =>
+              <li
+                value={image}
+                key={index}
+                onClick={this.handleAvatarChange.bind(this, index)}
+                >
+                  <img src={image}/>
+              </li>
+            )}
+          </ul>
+        </div>
         <div className="form-group">
             <button type="submit" className="btn btn-primary">
                 Register User
@@ -131,5 +162,10 @@ const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors
 });
+
+// <AvatarPicker
+//   images={imageList.map((image, i) => ({src: image, value: i}))}
+//   onPick={this.onPickImage.bind(this)}
+// />
 
 export default connect(mapStateToProps,{ registerUser })(withRouter(Register));

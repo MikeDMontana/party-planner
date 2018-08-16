@@ -1,0 +1,42 @@
+#root {
+  background-color: lightgray;
+}
+
+.responsive {
+  position: relative;
+  margin: 0 6px;
+  float: left;
+  opacity: 1;
+}
+
+.thumbnail {
+  padding: 5px;
+  width: 150px;
+  opacity: 1;
+  margin: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.thumbnail:hover {
+  box-shadow: 0 0 25px 1px rgba(0, 140, 186, 0.7);
+  background-color: white;
+}
+
+.selected {
+  background-color: white;
+  box-shadow: 0 0 25px 1px rgba(0, 140, 186, 0.7);
+  border-radius: 50%;
+}
+
+.selected:hover {
+  cursor: pointer;
+}
+
+.checked {
+  display: none;
+}
+
+.clear {
+  clear: both;
+}

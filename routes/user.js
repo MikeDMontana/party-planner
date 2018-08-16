@@ -25,16 +25,16 @@ router.post('/register', function(req, res) {
             });
         }
         else {
-            const avatar = gravatar.url(req.body.email, {
-                s: '200',
-                r: 'pg',
-                d: 'mm'
-            });
+            // const avatar = gravatar.url(req.body.email, {
+            //     s: '200',
+            //     r: 'pg',
+            //     d: 'mm'
+            // });
             const newUser = new User({
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password,
-                avatar
+                avatar: req.body.avatar
             });
 
             bcrypt.genSalt(10, (err, salt) => {
@@ -107,7 +107,8 @@ router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) =
   return res.json({
     id: req.user.id,
     name: req.user.name,
-    email: req.user.email
+    email: req.user.email,
+    avatar: req.user.avatar
   });
 });
 

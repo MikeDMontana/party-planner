@@ -5,6 +5,12 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authentication';
 import { withRouter } from 'react-router-dom';
 
+import orange from '../images/orange.png';
+import grapes from '../images/grapes.png';
+import carrot from '../images/carrot.png';
+
+const images = [orange, grapes, carrot];
+
 class Navbar extends Component {
 
   onLogout(e) {
@@ -18,7 +24,7 @@ class Navbar extends Component {
       <ul className="navbar-nav ml-auto">
         <a href="#" className="nav-link" onClick={this.onLogout.bind(this)}>
           <img
-            src={user.avatar}
+            src={images[user.avatar]}
             alt={user.name}
             title={user.name}
             className="rounded-circle"
