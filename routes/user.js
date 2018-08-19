@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
@@ -25,16 +24,12 @@ router.post('/register', function(req, res) {
             });
         }
         else {
-            // const avatar = gravatar.url(req.body.email, {
-            //     s: '200',
-            //     r: 'pg',
-            //     d: 'mm'
-            // });
             const newUser = new User({
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password,
-                avatar: req.body.avatar
+                avatar: req.body.avatar,
+                slogan: req.body.slogan
             });
 
             bcrypt.genSalt(10, (err, salt) => {
@@ -108,7 +103,8 @@ router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) =
     id: req.user.id,
     name: req.user.name,
     email: req.user.email,
-    avatar: req.user.avatar
+    avatar: req.user.avatar,
+    slogan: req.user.slogan
   });
 });
 

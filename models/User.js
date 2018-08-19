@@ -81,6 +81,9 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    slogan: {
+      type: String
+    },
     parties: [PartySchema]
 });
 

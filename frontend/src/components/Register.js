@@ -4,12 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { registerUser } from '../actions/authentication';
 import classnames from 'classnames';
-
-import orange from '../images/orange.png';
-import grapes from '../images/grapes.png';
-import carrot from '../images/carrot.png';
-
-const images = [orange, grapes, carrot];
+const img = require('./DataExports');
 
 class Register extends Component {
   constructor() {
@@ -20,7 +15,7 @@ class Register extends Component {
       password: '',
       password_confirm: '',
       avatar_select: 0,
-      images: [],
+      slogan: '',
       errors: {}
     }
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -48,7 +43,8 @@ class Register extends Component {
       email: this.state.email,
       password: this.state.password,
       password_confirm: this.state.password_confirm,
-      avatar: this.state.avatar_select
+      avatar: this.state.avatar_select,
+      slogan: this.state.slogan
     }
     this.props.registerUser(user, this.props.history);
   }
@@ -131,7 +127,7 @@ class Register extends Component {
         </div>
         <div className="avatar-preview">
           <ul>
-            {images.map((image, index) =>
+            {img.images.map((image, index) =>
               <li
                 value={image}
                 key={index}
@@ -142,6 +138,17 @@ class Register extends Component {
             )}
           </ul>
         </div>
+        <div className="form-group">
+            <input
+            type="text"
+            placeholder="I don't like food I love it. If I don't love it I don't swallow"
+            className="form-control form-control-lg"
+            name="slogan"
+            onChange={ this.handleInputChange }
+            value={ this.state.slogan }
+            />
+        </div>
+
         <div className="form-group">
             <button type="submit" className="btn btn-primary">
                 Register User
