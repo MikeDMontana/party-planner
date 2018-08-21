@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authentication';
 import { withRouter } from 'react-router-dom';
+import logo from '../images/logo.png';
+
 const img = require('./DataExports');
 
 class Navbar extends Component {
@@ -40,8 +42,8 @@ class Navbar extends Component {
       </ul>
     )
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link className="navbar-brand" to="/">Redux Node Auth</Link>
+      <nav className="navbar navbar-expand-lg">
+        <Link className="navbar-brand" to="/"><img src={logo} alt="Foodies Party Planner logo" /></Link>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           {isAuthenticated ? authLinks : guestLinks}
         </div>

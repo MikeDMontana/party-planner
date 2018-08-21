@@ -1,5 +1,44 @@
 #root {
-  background-color: lightgray;
+  background:url("backgroundBlush.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.container {
+  margin: 0em !important;
+  padding: 0em !important;
+}
+
+.registerContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0em 2em 0em 2em;
+  justify-content: center;
+  height: 100vh;
+}
+
+.registerContainer ul li {
+  list-style: none;
+}
+
+.registerForm {
+  width: 66%;
+}
+
+.registerAvatar {
+  width: 33%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 80%;
+}
+
+.registerAvatar img {
+  width: 80%;
 }
 
 .responsive {

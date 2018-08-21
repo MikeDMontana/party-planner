@@ -13,6 +13,9 @@ import Home from './components/Home';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const bkgdBlush = require('./images/backgroundBlush.jpg');
+
+
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
