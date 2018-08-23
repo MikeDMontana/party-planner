@@ -51,8 +51,7 @@ class Login extends Component {
   render() {
     const {errors} = this.state;
     return(
-      <div className="container" style={{ marginTop: '50px', width: '700px' }}>
-        <h2 style={{marginBottomd: '40px'}}>Login</h2>
+      <div className="loginContainer">
         <form onSubmit={ this.handleSubmit }>
           <div className="form-group">
             <input
