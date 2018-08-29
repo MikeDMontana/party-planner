@@ -6,6 +6,8 @@ import { logoutUser } from '../actions/authentication';
 import { withRouter } from 'react-router-dom';
 import logo from '../images/logo.png';
 
+import './styles/navbar.css';
+
 const img = require('./DataExports');
 
 class Navbar extends Component {
@@ -32,19 +34,19 @@ class Navbar extends Component {
       </ul>
     )
     const guestLinks = (
-      <ul className="navbar-nav ml-auto">
-        <li className="nav-item">
-          <Link className="nav-link" to="/register">Sign Up</Link>
+      <ul className="navLinks">
+        <li>
+          <Link to="/register">Sign Up</Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/login">Sign In</Link>
+        <li>
+          <Link to="/login">Sign In</Link>
         </li>
       </ul>
     )
     return (
-      <nav className="navbar navbar-expand-lg">
-        <Link className="navbar-brand" to="/"><img src={logo} alt="Foodies Party Planner logo" /></Link>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <nav className="navbar">
+        <Link to="/"><img src={logo} alt="Foodies Party Planner logo" /></Link>
+        <div>
           {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { loginUser } from '../actions/authentication';
 import classnames from 'classnames';
 
+import './styles/login.css';
+
 class Login extends Component {
   constructor() {
     super();
@@ -53,11 +55,11 @@ class Login extends Component {
     return(
       <div className="loginContainer">
         <form onSubmit={ this.handleSubmit }>
-          <div className="form-group">
+          <div>
             <input
             type="email"
             placeholder="Email"
-            className={classnames("form-control form-control-lg", {
+            className={classnames("foodieInputs emailInput", {
               'is-invalid': errors.email
             })}
             name="email"
@@ -66,11 +68,11 @@ class Login extends Component {
             />
             {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
           </div>
-          <div className="form-group">
+          <div>
             <input
             type="password"
             placeholder="Password"
-            className={classnames("form-control form-control-lg", {
+            className={classnames("foodieInputs passwordInput", {
               'is-invalid': errors.password
             })}
             name="password"
@@ -79,8 +81,8 @@ class Login extends Component {
             />
             {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
           </div>
-          <div className="form-group">
-            <button type="submit" className="btn btn-primary">
+          <div>
+            <button type="submit" className="primaryBtn">
               Login user
             </button>
           </div>

@@ -1,95 +1,30 @@
 body {
   background:url("backgroundBlush.jpg");
   background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.registerContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 0 auto;
-  padding: 2em 5em;
+  background-size: cover;
   height: 100vh;
+  overflow: hidden;
 }
 
-.registerForm {
-  width: 60%;
-  padding: 2em 0em 0em 2em;
+.foodieInputs {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 99%;
+  padding: .5em;
+  border-radius: .375em;
+  font-size: 18px;
+  margin-bottom: .5em;
+  color: darkblue;
 }
 
-.avatarPreview {
-  width: 40%;
-  margin: 0 auto;
-  text-align: center;
-  height: 100%;
+.foodieInputs:focus {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+  padding: 1em;
+  width: 100%;
 }
 
-.avatarPreview img{
-  width: 90%;
-  margin-top: -1em;
-  height: auto;
-}
-
-.sloganContainer h3, .sloganContainer p {
-  margin: 0px;
-  padding: 0px;
-}
-
-.sloganContainer {
- font-size: 16px !important;
- box-shadow: 0 10px 15px #000a;
- position: relative;
- background: white;
- color: darkblue;
- text-align: center;
- padding: 0.5em 2em; /* Adjust to suit */
- margin: -30px 10% 0px 10%;
- width: 80%;
-}
-.sloganContainer:before, .sloganContainer:after {
- content: "";
- position: absolute;
- display: block;
- bottom: -1em;
- border: 1.5em solid white;
- z-index: -2;
-
-}
-.sloganContainer:before {
- left: -2em;
- border-right-width: 1.5em;
- border-left-color: transparent;
-  box-shadow: 10px 1px 10px #000a;
-}
-.sloganContainer:after {
- right: -2em;
- border-left-width: 1.5em;
- border-right-color: transparent;
-box-shadow: -10px 1px 10px #000a;
-}
-
-.sloganContainer .sloganContainer-content:before, .sloganContainer .sloganContainer-content:after {
- content: "";
- position: absolute;
- display: block;
- border-style: solid;
- border-color: darkblue transparent transparent transparent;
-}
-.sloganContainer .sloganContainer-content:before {
- left: 0;
- border-width: 1em 0 0 1em;
-}
-.sloganContainer .sloganContainer-content:after {
- right: 0;
- border-width: 1em 1em 0 0;
-}
-
-.loginContainer {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  padding: 2em 5em;
-  width: 60%;
-  height: 100vh;
+.primaryBtn {
+  color: darkblue;
+  background-color: rgba(255, 255, 255, 0.0);
+  border: 1px solid darkblue;
 }

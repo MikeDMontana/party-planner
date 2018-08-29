@@ -1,0 +1,22 @@
+.navbar {
+  padding: 2em 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navbar ul li {
+  padding-left: 2em;
+  text-transform: uppercase;
+}
+
+.navbar a {
+  text-decoration: none;
+}

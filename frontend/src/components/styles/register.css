@@ -1,0 +1,116 @@
+.registerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 2em 5em;
+  height: 100vh;
+}
+
+.registerForm {
+  width: 60%;
+  padding: 2em 0em 0em 4em;
+}
+
+.avatarPreview {
+  width: 40%;
+  margin: 0 auto;
+  text-align: center;
+  height: 100%;
+}
+
+.avatarPreview img{
+  width: 90%;
+  margin-top: -1em;
+  height: auto;
+}
+
+.sloganContainer h3, .sloganContainer p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.sloganContainer {
+ font-size: 16px !important;
+ box-shadow: 0 10px 15px #000a;
+ position: relative;
+ background: white;
+ color: darkblue;
+ text-align: center;
+ padding: 0.5em 2em; /* Adjust to suit */
+ margin: -30px 10% 0px 10%;
+}
+
+.sloganContainer:before, .sloganContainer:after {
+ content: "";
+ position: absolute;
+ display: block;
+ bottom: -1em;
+ border: 1.5em solid white;
+ z-index: -2;
+}
+
+.sloganContainer:before {
+ left: -2em;
+ border-right-width: 1.5em;
+ border-left-color: transparent;
+  box-shadow: 10px 1px 10px #000a;
+}
+
+.sloganContainer:after {
+ right: -2em;
+ border-left-width: 1.5em;
+ border-right-color: transparent;
+ box-shadow: -10px 1px 10px #000a;
+}
+
+.sloganContainer .sloganContainer-content:before, .sloganContainer .sloganContainer-content:after {
+ content: "";
+ position: absolute;
+ display: block;
+ border-style: solid;
+ border-color: darkblue transparent transparent transparent;
+}
+
+.sloganContainer .sloganContainer-content:before {
+ left: 0;
+ border-width: 1em 0 0 1em;
+}
+
+.sloganContainer .sloganContainer-content:after {
+ right: 0;
+ border-width: 1em 1em 0 0;
+}
+
+.avatarSelectRow {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0em;
+  margin: 0em;
+}
+
+.avatarDropdown {
+  height: 20px;
+  overflow: auto;
+  width: 50%;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: darkblue;
+  list-style: none;
+  border: 1px solid darkblue;
+  padding: 0.5em;
+}
+
+.avatarDropdown li {
+  height: 100%;
+  cursor: pointer;
+}
+
+.avatarDropdown li::selection {
+  background-color: light
+}
+
+.registerUserBtn {
+  width: 40%;
+}

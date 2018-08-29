@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { registerUser } from '../actions/authentication';
 import classnames from 'classnames';
+
+import './styles/register.css';
+
 const img = require('./DataExports');
 
 class Register extends Component {
@@ -81,11 +84,11 @@ class Register extends Component {
         </div>
         <div className="registerForm">
           <form onSubmit={ this.handleSubmit }>
-            <div className="form-group">
+            <div>
               <input
                 type="text"
                 placeholder="Name"
-                className={classnames("form-control form-control-lg", {
+                className={classnames("foodieInputs nameInput", {
                   'is-invalid': errors.name
                 })}
                 name="name"
@@ -94,11 +97,11 @@ class Register extends Component {
               />
               {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
             </div>
-            <div className="form-group">
+            <div>
                 <input
                 type="email"
                 placeholder="Email"
-                className={classnames("form-control form-control-lg", {
+                className={classnames("foodieInputs emailInput", {
                   'is-invalid': errors.email
                 })}
                 name="email"
@@ -107,11 +110,11 @@ class Register extends Component {
                 />
                 {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
             </div>
-            <div className="form-group">
+            <div>
                 <input
                 type="password"
                 placeholder="Password"
-                className={classnames("form-control form-control-lg", {
+                className={classnames("foodieInputs passwordInput", {
                   'is-invalid': errors.password
                 })}
                 name="password"
@@ -120,11 +123,11 @@ class Register extends Component {
                 />
                 {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
             </div>
-            <div className="form-group">
+            <div>
                 <input
                 type="password"
                 placeholder="Confirm Password"
-                className={classnames("form-control form-control-lg", {
+                className={classnames("foodieInputs passwordConfirmInput", {
                   'is-invalid': errors.password_confirm
                 })}
                 name="password_confirm"
@@ -133,29 +136,24 @@ class Register extends Component {
                 />
                 {errors.password_confirm && (<div className="invalid-feedback"> {errors.password_confirm}</div>)}
             </div>
-            <div className="form-group">
+            <div>
                 <input
                 type="text"
+                className="foodieInputs sloganInput"
                 placeholder="Your Awesome Food Slogan Here... such as FEED ME SEYMORE"
-                className="form-control form-control-lg"
                 name="slogan"
                 onChange={ this.handleInputChange }
                 value={ this.state.slogan }
                 />
             </div>
-            <div className="form-group">
-                <select
-                onChange={ this.handleAvatarChange }
-                value={ this.state.avatar_select }
-                >
-                <option value="0">Orange</option>
-                <option value="1">Grapes</option>
-                <option value="2">Carrot</option>
-                <option value="3">Sushi</option>
-                </select>
-            </div>
-            <div className="form-group">
-                <button type="submit" className="btn btn-primary">
+            <div className="avatarSelectRow">
+              <ul onClick={ this.handleAvatarChange } className="avatarDropdown">
+                <li value="0">Orange</li>
+                <li value="1">Grapes</li>
+                <li value="2">Carrot</li>
+                <li value="3">Sushi</li>
+              </ul>
+                <button type="submit" className="primaryBtn registerUserBtn">
                     Register User
                 </button>
             </div>
@@ -165,6 +163,18 @@ class Register extends Component {
 )
 }
 }
+
+// <select
+// onChange={ this.handleAvatarChange }
+// value={ this.state.avatar_select }
+// className="avatarDropdown"
+// >
+// <option value="0">Orange</option>
+// <option value="1">Grapes</option>
+// <option value="2">Carrot</option>
+// <option value="3">Sushi</option>
+// </select>
+
 
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
