@@ -1,0 +1,21 @@
+.avatarSlider {
+  height: 52%;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  height: 375px;
+  overflow: hidden;
+  padding: 1em;
+}
+
+.nextArrow, .backArrow {
+  position: absolute;
+  top: 35%;
+  cursor: pointer;
+}
+
+.nextArrow {
+  right: 0px;
+}
