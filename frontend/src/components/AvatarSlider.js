@@ -20,13 +20,13 @@ export default class AvatarSlider extends Component {
     if(this.state.currentIndex === 0) {
       return this.setState({
         currentIndex: this.state.images.length - 1,
-        translateValue: this.state.images.length - 1
+        translateValue: -(document.querySelector('.slide').clientHeight * (this.state.images.length-1))
       })
     }
 
     this.setState(prevState => ({
       currentIndex: prevState.currentIndex - 1,
-      translateValue: prevState.translateValue + -(this.slideWidth())
+      translateValue: prevState.translateValue - -(this.slideWidth())
     }));
   }
 
@@ -63,7 +63,7 @@ export default class AvatarSlider extends Component {
             ))
           }
           </div>
-          <AvatarLeftArrow goToPrevSlide={this.goToPrevSlide}/>
+          {this.state.currentIndex > 0 && <AvatarLeftArrow goToPrevSlide={this.goToPrevSlide}/>}
           <AvatarRightArrow goToNextSlide={this.goToNextSlide}/>
       </div>
     );

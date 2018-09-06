@@ -21,6 +21,7 @@ body {
   color: black;
   padding: 1em;
   width: 100%;
+  transition: all .5s ease-in;
 }
 
 .primaryBtn {
