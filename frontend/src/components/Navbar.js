@@ -23,7 +23,7 @@ class Navbar extends Component {
       <ul className="navbar-nav ml-auto">
         <a href="#" className="nav-link" onClick={this.onLogout.bind(this)}>
           <img
-            src={img.images[user.avatar]}
+            src={`images/${user.avatar}.png`}
             alt={user.name}
             title={user.name}
             className="rounded-circle"

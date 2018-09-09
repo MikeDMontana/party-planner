@@ -8,8 +8,6 @@ import AvatarSlider from './AvatarSlider';
 
 import './styles/register.css';
 
-// const img = require('./DataExports');
-
 class Register extends Component {
   constructor() {
     super();
@@ -18,17 +16,25 @@ class Register extends Component {
       email: '',
       password: '',
       password_confirm: '',
-      // avatar_select: 0,
+      avatar_select: 'orange',
       slogan: '',
       errors: {}
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleAvatarSlider = this.handleAvatarSlider.bind(this);
   }
 
   handleInputChange(e) {
     this.setState({
       [e.target.name]: e.target.value
+    });
+  }
+
+  handleAvatarSlider(data) {
+    const imageChosen = data
+    this.setState({
+      avatar_select: imageChosen
     });
   }
 
@@ -65,10 +71,11 @@ class Register extends Component {
 
   render() {
     const { errors } = this.state;
+    console.log(this.state.avatar_select);
     return(
       <div className="registerContainer">
         <div className="avatarPreview">
-        <AvatarSlider />
+        <AvatarSlider handlerFromRegister={this.handleAvatarSlider}/>
           {this.state.slogan.length > 0 &&
             <div className="sloganContainer">
               <h3>{this.state.slogan}</h3>
@@ -77,6 +84,7 @@ class Register extends Component {
           }
         </div>
         <div className="registerForm">
+          <h2>Please Choose An Avatar, And Create A Login To Get Started!</h2>
           <form onSubmit={ this.handleSubmit }>
             <div>
               <input

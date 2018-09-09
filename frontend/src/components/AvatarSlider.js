@@ -20,28 +20,30 @@ export default class AvatarSlider extends Component {
     if(this.state.currentIndex === 0) {
       return this.setState({
         currentIndex: this.state.images.length - 1,
-        translateValue: -(document.querySelector('.slide').clientHeight * (this.state.images.length-1))
+        translateValue: -(document.querySelector('.slide').clientHeight * (this.state.images.length-1)),
       })
     }
 
     this.setState(prevState => ({
       currentIndex: prevState.currentIndex - 1,
-      translateValue: prevState.translateValue - -(this.slideWidth())
-    }));
+      translateValue: prevState.translateValue - -(this.slideWidth()),
+    }), () => {this.props.handlerFromRegister(this.state.images[this.state.currentIndex]);}
+    )
   }
 
   goToNextSlide = () => {
     if(this.state.currentIndex === this.state.images.length - 1) {
       return this.setState({
         currentIndex: 0,
-        translateValue: 0
+        translateValue: 0,
       })
     }
 
     this.setState(prevState => ({
       currentIndex: prevState.currentIndex + 1,
-      translateValue: prevState.translateValue + -(this.slideWidth())
-    }));
+      translateValue: prevState.translateValue + -(this.slideWidth()),
+    }), () => {    this.props.handlerFromRegister(this.state.images[this.state.currentIndex]);}
+    )
   }
 
     slideWidth = () => {
@@ -49,7 +51,6 @@ export default class AvatarSlider extends Component {
     }
 
   render() {
-    console.log(this.state.currentIndex);
     return (
       <div className="avatarSlider">
         <div className="sliderWrapper"
