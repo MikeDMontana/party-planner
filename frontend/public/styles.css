@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+@import url('https://fonts.googleapis.com/css?family=Allerta');
+
 body {
   background:url("backgroundBlush.jpg");
   background-repeat: no-repeat;
@@ -28,4 +31,26 @@ body {
   color: darkblue;
   background-color: rgba(255, 255, 255, 0.0);
   border: 1px solid darkblue;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Abril Fatface";
+  margin: 0em;
+  padding: 0em;
+}
+
+p, ol, ul, caption {
+  font-family: "Allerta";
+}
+
+input {
+  margin: 0em;
+  padding: 0em;
+  font-family: "Allerta";
+}
+
+form {
+  margin: 0em;
+  padding: 0em;
+  font-family: "Allerta";
 }

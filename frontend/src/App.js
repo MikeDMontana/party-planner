@@ -11,6 +11,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Home from './components/Home';
 import Footer from './components/Footer';
+import About from './components/About';
 
 const bkgdBlush = require('./images/backgroundBlush.jpg');
 
@@ -35,10 +36,11 @@ class App extends Component {
           <div>
             <Navbar />
             <Footer />
-              <Route exact path='/' component={ Home } />
+              <Route exact path='/' component={ About } />
               <div className='homeContainer'>
                 <Route exact path='/register' component={ Register } />
                 <Route exact path='/login' component={ Login } />
+                <Route exact path='/about' component={ About } />
               </div>
             </div>
         </Router>

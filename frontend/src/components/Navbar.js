@@ -41,6 +41,9 @@ class Navbar extends Component {
         <li>
           <Link to="/login">Sign In</Link>
         </li>
+        <li>
+          <Link to="/about">about</Link>
+        </li>
       </ul>
     )
     return (
