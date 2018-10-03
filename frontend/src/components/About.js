@@ -6,7 +6,7 @@ import './styles/about.css';
 const github = require('../images/githubIcon.png');
 const linkedIn = require('../images/linkedInIcon.png');
 const dribbble = require('../images/dribbbleIcon.png');
-const fish = require('../images/fish.png');
+const ketchup = require('../images/ketchup.png');
 
 
 class About extends Component {
@@ -33,7 +33,7 @@ class About extends Component {
             <p>In the end everyone knows what will be made and by whom!  <br />Easy <b><em>PEAS</em></b>-y.  Get started by <Link to="/register"><span className="inLineLink">Registering...</span></Link></p>
           </div>
           <div className="aboutRightSide">
-            <img src={fish} alt="fish illustration by Mike Dreiling Illustrator Developer Designer" />
+            <img src={ketchup} alt="food illustration by Mike Dreiling Illustrator Developer Designer" />
           </div>
         </div>
       </div>

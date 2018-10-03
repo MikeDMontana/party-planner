@@ -8,8 +8,6 @@ import logo from '../images/logo.png';
 
 import './styles/navbar.css';
 
-const img = require('./DataExports');
-
 class Navbar extends Component {
 
   onLogout(e) {
@@ -21,6 +19,7 @@ class Navbar extends Component {
     const {isAuthenticated, user} = this.props.auth;
     const authLinks = (
       <ul className="navbar-nav ml-auto">
+      <li>
         <a href="#" className="nav-link" onClick={this.onLogout.bind(this)}>
           <img
             src={`images/${user.avatar}.png`}
@@ -31,6 +30,10 @@ class Navbar extends Component {
           />
           Logout
         </a>
+      </li>
+      <li>
+        <Link to="/profile">Profile</Link>
+      </li>
       </ul>
     )
     const guestLinks = (

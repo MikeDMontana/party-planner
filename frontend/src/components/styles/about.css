@@ -4,14 +4,13 @@
 }
 
 .aboutBox {
-  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 2em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
-  padding: 2em 0em 2em 2em;
+  padding: 1em 0em 2em 2em;
 }
 
 .aboutBox h2 {
@@ -28,7 +27,7 @@
 }
 
 .aboutRightSide img {
-  min-height: 110%;
+  width: 100%;
 }
 
 hr {

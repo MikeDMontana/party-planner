@@ -18,7 +18,7 @@ class Register extends Component {
       password_confirm: '',
       avatar_select: 'orange',
       slogan: '',
-      errors: {}
+      errors: {},
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -71,7 +71,6 @@ class Register extends Component {
 
   render() {
     const { errors } = this.state;
-    console.log(this.state.avatar_select);
     return(
       <div className="registerContainer">
         <div className="avatarPreview">
@@ -160,12 +159,12 @@ class Register extends Component {
 
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors,
 });
 
 export default connect(mapStateToProps,{ registerUser })(withRouter(Register));

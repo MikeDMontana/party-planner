@@ -12,6 +12,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import About from './components/About';
+import Profile from './components/Profile';
 
 const bkgdBlush = require('./images/backgroundBlush.jpg');
 
@@ -41,6 +42,7 @@ class App extends Component {
                 <Route exact path='/register' component={ Register } />
                 <Route exact path='/login' component={ Login } />
                 <Route exact path='/about' component={ About } />
+                <Route exact path='/profile' component={ Profile } />
               </div>
             </div>
         </Router>
