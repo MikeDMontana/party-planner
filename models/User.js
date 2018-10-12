@@ -1,13 +1,3 @@
-
-// Old exports below keep for notes:
-//
-// module.exports = {
-//   User: mongoose.model('users', UserSchema),
-//   // Party: mongoose.model('Party', PartySchema),
-//   // Meal: mongoose.model('Meal', MealSchema),
-//   // Recipe: mongoose.model('Recipe', RecipeSchema)
-// };
-
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
@@ -46,19 +36,14 @@ const MealSchema = new Schema({
 });
 
 const PartySchema = new Schema({
-    title: {
-      type: String,
-      required: true
-    },
+    partyTitle: String,
     date: {
       type: Date,
       default: Date.now
     },
-    description: {
-      type: String,
-      required: true
-    },
-    meals: [MealSchema]
+    partyDescription: String,
+    members: Array,
+    // meals: [MealSchema]
 });
 
 const UserSchema = new Schema({
@@ -88,5 +73,14 @@ const UserSchema = new Schema({
 });
 
 const User = mongoose.model('users', UserSchema);
+const Party = mongoose.model('party', PartySchema);
+// //
+module.exports = User, Party;
+// module.exports = Party;
 
-module.exports = User;
+// module.exports = {
+//   User: mongoose.model('users', UserSchema)
+//   // Party: mongoose.model('Party', PartySchema),
+//   // Meal: mongoose.model('Meal', MealSchema),
+//   // Recipe: mongoose.model('Recipe', RecipeSchema)
+// };

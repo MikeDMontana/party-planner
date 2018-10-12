@@ -1,4 +1,6 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const request = require('request');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -7,6 +9,62 @@ const validateRegisterInput = require('../validation/register');
 const validateLoginInput = require('../validation/login');
 
 const User = require('../models/User');
+const Party = require('../models/User');
+
+const app = express();
+
+// configure app to use BodyParser()
+// this will let us get the data from a POST
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// allow CORS and Headers
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+// =====================================================
+// find user by ID
+// then update user with party sent to route
+
+router.route('/:user_id/newParty')
+
+  .get(function(req, res) {
+    User.findById(req.params.user_id, function(err, user) {
+      if (err)
+        res.send(err);
+
+        res.json(user);
+    });
+  })
+
+  .put(function(req, res) {
+
+    User.findById(req.params.user_id, function(err, user) {
+      if (err)
+        res.send(err);
+
+        let party = new Party({
+          partyTitle: req.body.partyTitle,
+          date: req.body.date,
+          partyDescription: req.body.partyDescription,
+          members: req.body.members,
+          meals: []
+        });
+
+        user.parties.push(party);
+        user.save(function(err) {
+          if (err)
+            res.send(err);
+
+            console.log(user.parties);
+        });
+    });
+  });
+
+// ===================================================
+
 
 router.post('/register', function(req, res) {
 
@@ -75,7 +133,8 @@ router.post('/login', (req, res) => {
             const payload = {
               id: user.id,
               name: user.name,
-              avatar: user.avatar
+              avatar: user.avatar,
+              slogan: user.slogan
             }
             jwt.sign(payload, 'secret', {
               expiresIn: 3600
@@ -97,15 +156,5 @@ router.post('/login', (req, res) => {
     });
 });
 
-router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) => {
-
-  return res.json({
-    id: req.user.id,
-    name: req.user.name,
-    email: req.user.email,
-    avatar: req.user.avatar,
-    slogan: req.user.slogan
-  });
-});
 
 module.exports = router;

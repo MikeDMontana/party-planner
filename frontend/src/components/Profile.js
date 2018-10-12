@@ -17,6 +17,7 @@ class Profile extends Component {
       <div className="profileContainer">
         <div className="profileColumn">
           <h2>Parties</h2>
+          <Link to="/newparty">Create A New Party</Link>
         </div>
 
         <div className="profileColumn">
@@ -24,8 +25,11 @@ class Profile extends Component {
             src={`images/${user.avatar}.png`}
             alt={user.name}
             title={user.name}
-            className="rounded-circle"
+            className="rounded-circle avatarImg"
           />
+          <div className="sloganContainer">
+            <p><b><em>{user.slogan + " " + " - "}</em></b>{user.name}</p>
+          </div>
         </div>
 
         <div className="profileColumn">
