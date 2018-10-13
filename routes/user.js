@@ -59,6 +59,7 @@ router.route('/:user_id/newParty')
           if (err)
             res.send(err);
 
+            res.json(user.parties);
         });
     });
   });
