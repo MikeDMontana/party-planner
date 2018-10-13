@@ -18,6 +18,7 @@
   font-size: 16px;
   margin-top: 1em;
   cursor: pointer;
+  transition: all 0.7s ease-in;
 }
 
 .loginUserBtn:hover {

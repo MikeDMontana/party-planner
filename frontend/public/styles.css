@@ -54,3 +54,7 @@ form {
   padding: 0em;
   font-family: "Allerta";
 }
+
+.homeContainer {
+  height: 80vh;
+}

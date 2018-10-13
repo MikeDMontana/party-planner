@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import AddNewMember from './AddNewMember';
 import { withRouter } from 'react-router-dom';
 import { postNewParty } from '../actions/partiesActionCreator';
-
 import './styles/newparty.css';
+
+import coffee from '../images/coffeeNoCircle.png'
 
 class NewParty extends Component {
   constructor(props) {
@@ -14,21 +16,16 @@ class NewParty extends Component {
       partyTitle: '',
       date: '',
       partyDescription: '',
-      members: [],
-      newMember: ''
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleNewMemberChange = this.handleNewMemberChange.bind(this);
-    this.handleNewMemberSubmit = this.handleNewMemberSubmit.bind(this);
   }
 
   handleInputChange(e) {
     this.setState({
       [e.target.name]:e.target.value
     });
-    console.log(e);
   }
 
   handleSubmit(e) {
@@ -38,34 +35,31 @@ class NewParty extends Component {
       partyTitle: this.state.partyTitle,
       date: this.state.date,
       partyDescription: this.state.partyDescription,
-      members: this.state.members,
+      members: this.props.members,
     }
     this.props.postNewParty(newParty, this.props.history, user);
   }
-
-  handleNewMemberChange(e) {
-    const newMemberInput = e.target.value;
-    this.setState({
-      newMember: newMemberInput
-    });
-  }
-
-  handleNewMemberSubmit(e) {
-    e.preventDefault();
-    // call to redux reducer here to add newMember to the members array
-  }
-
 
   // this component will create a new party or Event
   // the user will fill out a form giving a date, title, description of the Event
   // the user will also add member by member emails to the party
 
   render() {
+    console.log(this.props.members);
     const {user} = this.props.auth;
     return (
       <div className="newPartyContainer">
-        <h2>New Party</h2>
-        <form onSubmit={ this.handleSubmit }>
+      <div className="newPartyFormContainer">
+        <div className="titleColumn">
+          <img src={coffee} alt="coffee cup illustration by Mike Dreiling Design and Development"/>
+        </div>
+        <form className="newPartyForm" onSubmit={ this.handleSubmit }>
+          <div>
+            <h2>New Party</h2>
+            <p>Create a party with friends so you can plan
+            out recipes that everyone wants. Make sure to add your
+            friends emails one by one and dont leave out a single foodie!</p>
+          </div>
           <div>
             <input
             type="text"
@@ -95,25 +89,29 @@ class NewParty extends Component {
             value={ this.state.partyDescription }
             />
           </div>
+          <AddNewMember />
           <div>
-            <input
-            type="text"
-            placeholder="Enter Member Emails Here"
-            className="foodieInputs partyNameInput"
-            name="newMember"
-            onChange={ this.handleInputChange }
-            value={ this.state.newMember }
-            />
-            <button>Add Member</button>
-          </div>
-          <div>
-            <button type="submit">Submit</button>
+            <button type="submit" className="primaryBtn loginUserBtn">Submit</button>
           </div>
         </form>
+        </div>
       </div>
     );
   }
 }
+
+// <div>
+//   <input
+//   type="text"
+//   placeholder="Enter Member Emails Here"
+//   className="partyMembersInput"
+//   name="newMember"
+//   onChange={ this.handleInputChange }
+//   value={ this.state.newMember }
+//   />
+//   <button className="addMemberBtn">Add Member</button>
+// </div>
+
 
 NewParty.propTypes = {
   postNewParty: PropTypes.func.isRequired,
@@ -121,8 +119,8 @@ NewParty.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  newMember: state.newMember,
-  auth: state.auth
+  auth: state.auth,
+  members: state.members
 });
 
 export default connect(mapStateToProps, { postNewParty })(withRouter(NewParty));
