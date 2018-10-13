@@ -36,14 +36,18 @@ const MealSchema = new Schema({
 });
 
 const PartySchema = new Schema({
-    partyTitle: String,
+    partyTitle: {
+      type: String
+    },
     date: {
       type: Date,
       default: Date.now
     },
-    partyDescription: String,
+    partyDescription: {
+      type: String
+    },
     members: Array,
-    // meals: [MealSchema]
+    meals: [MealSchema]
 });
 
 const UserSchema = new Schema({
@@ -74,8 +78,16 @@ const UserSchema = new Schema({
 
 const User = mongoose.model('users', UserSchema);
 const Party = mongoose.model('party', PartySchema);
+const Meal = mongoose.model('meal', MealSchema);
+const Recipe = mongoose.model('recipe', RecipeSchema);
+
 // //
-module.exports = User, Party;
+module.exports = {
+  User: User,
+  Party: Party,
+  Meal: Meal,
+  Recipe: Recipe
+};
 // module.exports = Party;
 
 // module.exports = {

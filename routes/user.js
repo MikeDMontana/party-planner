@@ -8,8 +8,7 @@ const passport = require('passport');
 const validateRegisterInput = require('../validation/register');
 const validateLoginInput = require('../validation/login');
 
-const User = require('../models/User');
-const Party = require('../models/User');
+const models = require('../models/User');
 
 const app = express();
 
@@ -31,7 +30,7 @@ app.use((req, res, next) => {
 router.route('/:user_id/newParty')
 
   .get(function(req, res) {
-    User.findById(req.params.user_id, function(err, user) {
+    models.User.findById(req.params.user_id, function(err, user) {
       if (err)
         res.send(err);
 
@@ -40,12 +39,11 @@ router.route('/:user_id/newParty')
   })
 
   .put(function(req, res) {
-
-    User.findById(req.params.user_id, function(err, user) {
+    models.User.findById(req.params.user_id, function(err, user) {
       if (err)
         res.send(err);
 
-        let party = new Party({
+        let party = new models.Party({
           partyTitle: req.body.partyTitle,
           date: req.body.date,
           partyDescription: req.body.partyDescription,
@@ -53,12 +51,14 @@ router.route('/:user_id/newParty')
           meals: []
         });
 
+        console.log("party " + party.partyDescription);
+
+
         user.parties.push(party);
         user.save(function(err) {
           if (err)
             res.send(err);
 
-            console.log(user.parties);
         });
     });
   });
@@ -73,7 +73,7 @@ router.post('/register', function(req, res) {
     if(!isValid) {
         return res.status(400).json(errors);
     }
-    User.findOne({
+    models.User.findOne({
         email: req.body.email
     }).then(user => {
         if(user) {
@@ -121,7 +121,7 @@ router.post('/login', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  User.findOne({email})
+  models.User.findOne({email})
     .then(user => {
       if(!user) {
         errors.email = 'User not found'
