@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { addMember } from '../actions/addNewMemberActionCreator';
 
+import './styles/addNewMember.css';
 
 class AddNewMember extends Component {
   constructor(props) {
@@ -36,11 +37,14 @@ class AddNewMember extends Component {
       <div className="addNewMemberContainer">
         <input
           type="text"
+          className="addNewMemberInput"
           value={this.state.newMember}
           placeholder="Add foodie friend email!"
           onChange={this.handleNewMemberInput}
         />
-        <button onClick={this.submitNewMember}>SUBMIT</button>
+        <button
+        onClick={this.submitNewMember}
+        className="addNewMemberBtn">SUBMIT</button>
       </div>
     );
   }

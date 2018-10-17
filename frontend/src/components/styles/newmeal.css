@@ -1,0 +1,61 @@
+.newMealContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin: 0 auto;
+  padding: 0em 5em;
+  height: 30%;
+}
+
+.newMealFormContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0em 5em;
+  height: 60%;
+}
+
+.newMealForm {
+  flex: 0 0 60%;
+  padding: 1em 0em 0em 4em;
+}
+
+.newMealForm h2 {
+  margin: 0em 0em 0.5em 0em;
+  padding: 0em;
+  color: darkblue;
+}
+
+p em {
+  color: lightgray;
+  transition: all .5s ease-in;
+}
+
+p em:hover {
+  background-color: black;
+  padding: .5em;
+  transition: all .5s ease-in;
+}
+
+.bottomImg {
+  height: 40%;
+  background-blend-mode: multiply;
+}
+
+.bottomImg img{
+  max-height: 300px;
+}
+
+.loginUserBtn {
+  width: 40%;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  border: 2px solid darkblue;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-top: 1em;
+  cursor: pointer;
+}

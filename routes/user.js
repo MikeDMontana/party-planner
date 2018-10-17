@@ -51,20 +51,55 @@ router.route('/:user_id/newParty')
           meals: []
         });
 
-        console.log("party " + party.partyDescription);
-
+        let newestParty = user.parties.length;
 
         user.parties.push(party);
         user.save(function(err) {
           if (err)
             res.send(err);
 
-            res.json(user.parties);
+            res.json(user.parties[newestParty]);
         });
     });
   });
 
 // ===================================================
+
+// GET specific party
+router.route('/:user_id/parties/:party_id')
+  .get(function(req, res) {
+    models.User.findById(req.params.user_id, function(err, user) {
+      if (err)
+        res.send(err);
+
+        res.json(user.parties.id(req.params.party_id));
+    });
+  })
+
+  .put(function(req, res) {
+    models.User.findById(req.params.user_id, function(err, user) {
+      if (err)
+        res.send(err);
+
+        let meal = new models.Meal({
+          mealTitle: req.body.partyTitle,
+          mealDescription: req.body.partyDescription,
+          recipes: []
+        });
+
+        let newestMeal = user.parties.meals;
+
+        user.parties.meals.push(meal);
+        user.save(function(err) {
+          if (err)
+            res.send(err);
+
+            res.json(user.parties.meals[newestMeal]);
+        });
+    });
+  });
+
+// END of GET Specific Party Route
 
 
 router.post('/register', function(req, res) {
@@ -135,7 +170,8 @@ router.post('/login', (req, res) => {
               id: user.id,
               name: user.name,
               avatar: user.avatar,
-              slogan: user.slogan
+              slogan: user.slogan,
+              parties: user.parties
             }
             jwt.sign(payload, 'secret', {
               expiresIn: 3600
