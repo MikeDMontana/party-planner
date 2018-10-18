@@ -24,13 +24,11 @@ const RecipeSchema = new Schema({
 });
 
 const MealSchema = new Schema({
-  title: {
-    type: String,
-    required: true
+  mealTitle: {
+    type: String
   },
-  description: {
-    type: String,
-    required: true
+  mealDescription: {
+    type: String
   },
   recipes: [RecipeSchema]
 });

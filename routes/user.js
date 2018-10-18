@@ -82,22 +82,21 @@ router.route('/:user_id/parties/:party_id')
         res.send(err);
 
         let meal = new models.Meal({
-          mealTitle: req.body.partyTitle,
-          mealDescription: req.body.partyDescription,
+          mealTitle: req.body.mealTitle,
+          mealDescription: req.body.mealDescription,
           recipes: []
         });
 
-        let newestMeal = user.parties.meals;
-
-        user.parties.meals.push(meal);
+        user.parties.id(req.params.party_id).meals.push(meal);
         user.save(function(err) {
           if (err)
             res.send(err);
 
-            res.json(user.parties.meals[newestMeal]);
+            // res.json(user);
+            res.json(user);
         });
     });
-  });
+  })
 
 // END of GET Specific Party Route
 

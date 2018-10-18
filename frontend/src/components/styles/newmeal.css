@@ -27,7 +27,7 @@
   color: darkblue;
 }
 
-p em {
+.newMealContainer p em {
   color: lightgray;
   transition: all .5s ease-in;
 }

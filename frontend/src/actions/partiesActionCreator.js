@@ -9,7 +9,9 @@ export const postNewParty = (party, history, user) => dispatch => {
   // take the latest party data and push user to create meal screen
   axios.put('./api/users/' + userID + '/newparty', party)
     // .then(res => history.push('./api/users/' + userID + 'parties/' + res.data._id))
-    .then(res => history.push('/newmeal'))
+    .then( (res) => {
+      let partyID = res.data._id;
+      history.push('/' + userID + '/parties/' + partyID)})
     .catch(err => {
       dispatch({
         type: GET_ERRORS,

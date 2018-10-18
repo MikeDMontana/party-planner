@@ -28,14 +28,15 @@ class NewMeal extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let user = this.props.auth.user;
-    let party = this.props.auth.user.parties[this.props.auth.user.parties.length - 1];
+    let userID = this.props.match.params.user_id;
+    let partyID = this.props.match.params.party_id;
+
     const newMeal = {
-      mealTitle: this.state.partyTitle,
-      mealDescription: this.state.partyDescription,
+      mealTitle: this.state.mealTitle,
+      mealDescription: this.state.mealDescription,
       recipes: []
     }
-    this.props.postNewMeal(newMeal, this.props.history, party, user);
+    this.props.postNewMeal(newMeal, this.props.history, partyID, userID);
   }
 
   // this component will create a new meal

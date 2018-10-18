@@ -1,16 +1,10 @@
 import axios from 'axios';
-import { GET_ERRORS, POST_NEW_PARTY } from './types';
+import { GET_ERRORS } from './types';
 
-export const postNewMeal = (meal, history, party, user) => dispatch => {
-  let userID = user.id;
-  let partyID = party.id;
-
-  // update user then
-  // the latest party created is returned via response
-  // take the latest party data and push user to create meal screen
-  axios.put('./api/users/' + userID + '/parties/' + partyID, meal)
+export const postNewMeal = (meal, history, partyID, userID) => dispatch => {
+  axios.put('/api/users/' + userID + '/parties/' + partyID, meal)
     // .then(res => history.push('./api/users/' + userID + 'parties/' + res.data._id))
-    .then(res => history.push('/about'))
+    .then(console.log(meal))
     .catch(err => {
       dispatch({
         type: GET_ERRORS,
