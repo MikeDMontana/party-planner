@@ -9,7 +9,8 @@ class NewRecipeSearch extends Component {
     super(props);
 
     this.state={
-      recipeSearch: ''
+      recipeSearch: '',
+      searchResults: []
     };
 
     this.handleSearchChange = this.handleSearchChange.bind(this);
@@ -37,8 +38,13 @@ class NewRecipeSearch extends Component {
               this.state.recipeSearch,
               {headers: config})
       .then((res) => {
-        let searchResults = res.data.results;
-        console.log(searchResults);
+        let newSearchResults = res.data.results;
+        this.setState({
+          searchResults: newSearchResults
+        });
+      })
+      .catch(err => {
+        console.log(err)
       });
   }
 
@@ -64,7 +70,14 @@ class NewRecipeSearch extends Component {
           </form>
         </div>
         <div className="newRecipeSearchRightSide">
-          <p>results</p>
+          <ul className="recipeResultsList">
+            {this.state.searchResults.map((recipe, i) =>
+              <li key={recipe.title}>
+                <img src={recipe.image}
+                alt={recipe.title + 'display from Mike Dreiling Design and Development'} />
+              </li>
+            )}
+          </ul>
         </div>
       </div>
     );

@@ -1,6 +1,6 @@
 .newRecipeSearchContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   margin: 0 auto;
   padding: 0em 3em;
@@ -10,19 +10,39 @@
 
 .newRecipeSearchRightSide {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   margin: 0 auto;
   padding: 0em 5em;
   width: 60%
 }
 
+.recipeResultsList {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 1;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.recipeResultsList li {
+  width: 80px;
+  transition: all .5s ease-in;
+}
+
+.recipeResultsList li:hover {
+  z-index: 1;
+  transition: all .5s ease-in;
+}
+
 .newRecipeSearchLeftSide {
   width: 30%;
+  display: flex;
+  flex-direction: column;
 }
 
 .newRecipeSearchLeftSide img {
-  max-width: 100%;
+  max-width: 50%;
 }
 
 .newRecipeSearchForm {
