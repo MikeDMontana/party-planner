@@ -3,22 +3,22 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const RecipeSchema = new Schema({
-  dishType: {
+  recipeType: {
     type: String
   },
-  name: {
+  recipeName: {
     type: String
   },
-  ingredients: {
+  recipeIngredients: {
     type: Array
   },  // []
-  directions: {
+  recipeDirections: {
     type: Array
   },
-  upvotes: {
+  recipeUpvotes: {
     type: Number
   },
-  downvotes: {
+  recipeDownvotes: {
     type: Number
   }
 });

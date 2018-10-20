@@ -1,0 +1,49 @@
+.newRecipeSearchContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0em 3em;
+  height: 30%;
+  width: 100%;
+}
+
+.newRecipeSearchRightSide {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0em 5em;
+  width: 60%
+}
+
+.newRecipeSearchLeftSide {
+  width: 30%;
+}
+
+.newRecipeSearchLeftSide img {
+  max-width: 100%;
+}
+
+.newRecipeSearchForm {
+  flex: 0 0 60%;
+  padding: 1em 0em 0em 4em;
+}
+
+.newRecipeSearchForm h2 {
+  margin: 0em 0em 0.5em 0em;
+  padding: 0em;
+  color: darkblue;
+}
+
+.newRecipeSearchContainer p em {
+  color: lightgray;
+  transition: all .5s ease-in;
+}
+
+p em:hover {
+  background-color: black;
+  padding: .5em;
+  transition: all .5s ease-in;
+  color: white;
+}

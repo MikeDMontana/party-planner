@@ -87,20 +87,70 @@ router.route('/:user_id/parties/:party_id')
           recipes: []
         });
 
+        let newestMeal = user.parties.id(req.params.party_id).meals.length;
         user.parties.id(req.params.party_id).meals.push(meal);
         user.save(function(err) {
           if (err)
             res.send(err);
 
             // res.json(user);
-            res.json(user);
+            res.json(user.parties.id(req.params.party_id).meals[newestMeal]);
         });
     });
   })
 
 // END of GET Specific Party Route
 
+// GET specific meal
+router.route('/:user_id/parties/:party_id/meals/:meal_id')
+  .get(function(req, res) {
+    models.User.findById(req.params.user_id, function(err, user) {
+      if (err)
+        res.send(err);
 
+        res.json(user.parties.id(req.params.party_id).meals.id(req.params.meal_id));
+    });
+  })
+
+  .put(function(req, res) { //update meal with recipe passed in
+    models.User.findById(req.params.user_id, function(err, user) {
+      if (err)
+        res.send(err);
+
+        let recipe = new models.Recipe({
+          recipeType: req.body.recipeType,
+          recipeName: req.body.recipeName,
+          recipeIngredients: req.body.recipeIngredients,
+          recipeDirections: req.body.recipeDirections,
+          recipeUpvotes: req.body.recipeUpvotes,
+          recipeDownvotes: req.body.recipeDownvotes
+        });
+
+        let newestRecipe = user.parties.id(req.params.party_id).meals.id(req.params.meal_id).recipes.length;
+        user.parties.id(req.params.party_id).meals.id(req.params.meal_id).recipes.push(recipe);
+        user.save(function(err) {
+          if (err)
+            res.send(err);
+
+            // res.json(user);
+            res.json(user.parties.id(req.params.party_id).meals.id(req.params.meal_id).recipes[newestRecipe]);
+        });
+    });
+  })
+
+// END of GET and PUT Specific MEAL Route
+
+// pipe the recipe search Request through proxy server
+// and deliver the response
+router.route('/:user_id/parties/:party_id/meals/:meal_id/recipes/:recipeSearch')
+
+  .get(function(req, res) {
+    let url = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?addRecipeInformation=true&fillIngredients=false&instructionsRequired=true&limitLicense=false&number=8&offset=0&query=' + req.params.recipeSearch;
+    req.pipe(request(url)).pipe(res);
+  });
+// end of recipeSearch
+
+// register route
 router.post('/register', function(req, res) {
 
     const { errors, isValid } = validateRegisterInput(req.body);

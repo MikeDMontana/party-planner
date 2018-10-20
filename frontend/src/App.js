@@ -15,6 +15,7 @@ import About from './components/About';
 import Profile from './components/Profile';
 import NewParty from './components/NewParty';
 import NewMeal from './components/NewMeal';
+import NewRecipeSearch from './components/NewRecipeSearch';
 
 const bkgdBlush = require('./images/backgroundBlush.jpg');
 
@@ -47,6 +48,7 @@ class App extends Component {
                 <Route exact path='/profile' component={ Profile } />
                 <Route exact path='/newparty' component={ NewParty } />
                 <Route exact path='/:user_id/parties/:party_id' component= { NewMeal } />
+                <Route exact path='/:user_id/parties/:party_id/meals/:meal_id' component={ NewRecipeSearch } />
               </div>
             </div>
         </Router>
