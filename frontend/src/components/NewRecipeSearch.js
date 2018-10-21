@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './styles/newrecipesearch.css';
 
-import coffee from '../images/coffeeNoCircle.png'
-
 class NewRecipeSearch extends Component {
   constructor(props) {
     super(props);
@@ -51,31 +49,35 @@ class NewRecipeSearch extends Component {
   render() {
     return(
       <div className="newRecipeSearchContainer">
-        <div className="newRecipeSearchLeftSide">
-          <img src={coffee} alt="food illustration by Mike Dreiling Design and Development" />
+        <div className="newRecipeSearchTop">
           <form className="newRecipeSearchForm" onSubmit={ this.handleRecipeSubmit }>
             <h2>Find Recipes! Then Save!</h2>
-            <p>search <em>via ingredient(s)</em> below</p>
             <input
               type="text"
-              className="foodiesInputs newRecipeSearchInput"
+              className="foodieInputs newRecipeSearchInput"
               name="recipeSearch"
               onChange={ this.handleSearchChange }
               value={ this.state.recipeSearch }
             />
             <button
               type="submit"
-              className="primartyBtn recipeSearchBtn"
+              className="primaryBtn recipeSearchBtn"
             >SEARCH</button>
           </form>
         </div>
-        <div className="newRecipeSearchRightSide">
+        <div className="newRecipeSearchResultsContainer">
           <ul className="recipeResultsList">
             {this.state.searchResults.map((recipe, i) =>
-              <li key={recipe.title}>
-                <img src={recipe.image}
-                alt={recipe.title + 'display from Mike Dreiling Design and Development'} />
-              </li>
+              <div className="recipeCard">
+                <li key={recipe.description}>
+                  <img src={recipe.image}
+                  alt={recipe.title + 'display from Mike Dreiling Design and Development'} />
+                </li>
+                <li key={recipe.title}>
+                  <p className="recipeCaption">{recipe.title}</p>
+                </li>
+                <li><button className="saveRecipeBtn">SAVE</button></li>
+              </div>
             )}
           </ul>
         </div>
