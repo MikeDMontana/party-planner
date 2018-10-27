@@ -100,18 +100,6 @@ class NewParty extends Component {
   }
 }
 
-// <div>
-//   <input
-//   type="text"
-//   placeholder="Enter Member Emails Here"
-//   className="partyMembersInput"
-//   name="newMember"
-//   onChange={ this.handleInputChange }
-//   value={ this.state.newMember }
-//   />
-//   <button className="addMemberBtn">Add Member</button>
-// </div>
-
 
 NewParty.propTypes = {
   postNewParty: PropTypes.func.isRequired,

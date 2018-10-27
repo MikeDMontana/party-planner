@@ -13,12 +13,12 @@ class ViewParty extends Component {
 
   render() {
     const {user} = this.props.auth;
-    const {selectedParty} = this.props.match.params.party_id;
+    const {party} = this.props.party;
     return(
       <div className="viewPartyContainer">
         <div className="profileColumn">
           <h2>View the selected Party</h2>
-          <p>{user.parties[this.props.match.params.party_id].partyTitle}</p>
+          <p>{party.partyTitle}</p>
         </div>
 
         <div className="profileColumn">
@@ -43,12 +43,12 @@ class ViewParty extends Component {
 
 ViewParty.propTypes = {
   auth: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired
+  party: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  match: state.match
+  party: state.party
 })
 
 export default connect(mapStateToProps, null)(withRouter(ViewParty));

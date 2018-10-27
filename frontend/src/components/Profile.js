@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { viewSelectedParty } from '../actions/viewSelectedPartyActionCreator';
 
 import './styles/profile.css';
 
@@ -13,15 +14,16 @@ class Profile extends Component {
   }
 
   selectedPartyHandler(e) {
-    let selectedParty = this.props.auth.user.parties[e.target.value]._id;
+    let selectedParty = this.props.auth.user.parties[e.target.value];
     let userID = this.props.auth.user.id;
 
-    this.props.history.push('/' + userID + '/parties/' + selectedParty + '/view');
-
+    this.props.viewSelectedParty(selectedParty);
+    this.props.history.push('/' + userID + '/parties/' + this.props.party.party._id + '/view')
   }
 
   render() {
     const {user} = this.props.auth;
+    console.log(this.props);
     return(
       <div className="profileContainer">
         <div className="profileColumn">
@@ -66,10 +68,12 @@ class Profile extends Component {
 
 Profile.propTypes = {
   auth: PropTypes.object.isRequired,
+  viewSelectedParty: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  party: state.party
 })
 
-export default connect(mapStateToProps, null)(withRouter(Profile));
+export default connect(mapStateToProps, {viewSelectedParty})(withRouter(Profile));
