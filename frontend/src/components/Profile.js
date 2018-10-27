@@ -9,6 +9,15 @@ import './styles/profile.css';
 class Profile extends Component {
   constructor(props) {
     super(props);
+    this.selectedPartyHandler = this.selectedPartyHandler.bind(this);
+  }
+
+  selectedPartyHandler(e) {
+    let selectedParty = this.props.auth.user.parties[e.target.value]._id;
+    let userID = this.props.auth.user.id;
+
+    this.props.history.push('/' + userID + '/parties/' + selectedParty + '/view');
+
   }
 
   render() {
@@ -17,6 +26,21 @@ class Profile extends Component {
       <div className="profileContainer">
         <div className="profileColumn">
           <h2>Parties</h2>
+          <ul className="userPartiesList">
+            {user.parties.map((party, i) =>
+              <div className="partyListed">
+                <li className="partyTitle"
+                    key={party.partyTitle}
+                    value={i}
+                    onClick={this.selectedPartyHandler}>
+                  {party.partyTitle}
+                </li>
+                <li className="partyDescription" key={party.partyDescription}>
+                  {party.partyDescription ? party.partyDescription : <em>"No Description Available"</em>}
+                </li>
+              </div>
+            )}
+          </ul>
           <Link to="/newparty">Create A New Party</Link>
         </div>
 
@@ -41,7 +65,7 @@ class Profile extends Component {
 }
 
 Profile.propTypes = {
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => ({
