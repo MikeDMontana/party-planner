@@ -48,7 +48,7 @@ class App extends Component {
                 <Route exact path='/profile' component={ Profile } />
                 <Route exact path='/newparty' component={ NewParty } />
                 <Route exact path='/:user_id/parties/:party_id' component= { NewMeal } />
-                <Route exact path='/:user_id/parties/:party_id/meals/:meal_id' component={ NewRecipeSearch } />
+                <Route exact path='/:user_id/parties/:party_id/meals/:meal_id/' component={ NewRecipeSearch } />
               </div>
             </div>
         </Router>

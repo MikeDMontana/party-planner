@@ -76,7 +76,7 @@ class NewRecipeSearch extends Component {
                 <li key={recipe.title}>
                   <p className="recipeCaption">{recipe.title}</p>
                 </li>
-                <li><button className="saveRecipeBtn">SAVE</button></li>
+                <li><button className="saveRecipeBtn">VIEW</button></li>
               </div>
             )}
           </ul>
