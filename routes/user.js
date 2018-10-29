@@ -100,6 +100,44 @@ router.route('/:user_id/parties/:party_id')
 
 // END of GET Specific Party Route
 
+// GET specific recipe
+router.route('/:user_id/parties/:party_id/meals/:meal_id/recipes/:recipe/view')
+  .get(function(req, res) {
+    models.User.findById(req.params.user_id, function(err, user) {
+      if (err)
+        res.send(err);
+
+        res.json(user.parties.id(req.params.party_id).meals.id(req.params.meal_id).recipes);
+    });
+  })
+
+  .put(function(req, res) {
+    models.User.findById(req.params.user_id, function(err, user) {
+      if (err)
+        res.send(err);
+
+        let newRecipe = new models.Recipe({
+          recipeType: req.body.recipeType,
+          recipeName: req.body.recipeName,
+          ingredients: req.body.ingredients,
+          recipeDirections: req.body.recipeDirections,
+          upvotes: req.body.upvotes,
+          downvotes: req.body.downvotes
+        });
+
+        user.parties.id(req.params.party_id).meals.id(req.params.meal_id).recipes.push(newRecipe);
+        user.save(function(err) {
+          if (err)
+            res.send(err);
+
+            // res.json(user);
+            res.json(user);
+        });
+    });
+  })
+
+// END of GET Specific Party Route
+
 // pipe the recipe search Request through proxy server
 // and deliver the response
 router.route('/:user_id/parties/:party_id/meals/:meal_id/recipes/:recipeSearch')

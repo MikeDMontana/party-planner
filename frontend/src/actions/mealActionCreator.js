@@ -5,7 +5,7 @@ export const postNewMeal = (meal, history, partyID, userID) => dispatch => {
   axios.put('/api/users/' + userID + '/parties/' + partyID, meal)
     .then( (res) => {
       let mealID = res.data._id;
-      history.push('/' + userID + '/parties/' + partyID + '/meals/' + mealID)})
+      history.push('/' + userID + '/parties/' + partyID + '/meals/' + mealID + '/recipeSearch')})
     .catch(err => {
       dispatch({
         type: GET_ERRORS,

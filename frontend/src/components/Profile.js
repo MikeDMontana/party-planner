@@ -18,12 +18,11 @@ class Profile extends Component {
     let userID = this.props.auth.user.id;
 
     this.props.viewSelectedParty(selectedParty);
-    this.props.history.push('/' + userID + '/parties/' + this.props.party.party._id + '/view')
+    this.props.history.push('/' + userID + '/parties/' + selectedParty._id + '/view')
   }
 
   render() {
     const {user} = this.props.auth;
-    console.log(this.props);
     return(
       <div className="profileContainer">
         <div className="profileColumn">
