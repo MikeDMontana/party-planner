@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { viewSelectedRecipe } from '../actions/viewSelectedRecipeActionCreator';
 import './styles/newrecipesearch.css';
 
 class NewRecipeSearch extends Component {
@@ -13,12 +17,20 @@ class NewRecipeSearch extends Component {
 
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleRecipeSubmit = this.handleRecipeSubmit.bind(this);
+    this.selectedRecipeHandler = this.selectedRecipeHandler.bind(this);
   }
 
   handleSearchChange(e) {
     this.setState({
       [e.target.name]:e.target.value
     });
+  }
+
+  selectedRecipeHandler(e) {
+    let recipeID = e.target.value
+    console.log(recipeID);
+
+    this.props.viewSelectedRecipe(recipeID);
   }
 
   handleRecipeSubmit(e) {
@@ -33,10 +45,11 @@ class NewRecipeSearch extends Component {
               '/meals/' +
               this.props.match.params.meal_id +
               '/recipes/' +
-              this.state.recipeSearch,
-              {headers: config})
+              this.state.recipeSearch
+              // ,{headers: config}
+            )
       .then((res) => {
-        let newSearchResults = res.data.results;
+        let newSearchResults = res.data.hits;
         this.setState({
           searchResults: newSearchResults
         });
@@ -69,14 +82,19 @@ class NewRecipeSearch extends Component {
           <ul className="recipeResultsList">
             {this.state.searchResults.map((recipe, i) =>
               <div className="recipeCard">
-                <li key={recipe.description}>
-                  <img src={recipe.image}
-                  alt={recipe.title + 'display from Mike Dreiling Design and Development'} />
+                <li>
+                  <img src={recipe.recipe.image}
+                  alt={recipe.recipe.label + 'display from Mike Dreiling Design and Development'} />
                 </li>
-                <li key={recipe.title}>
-                  <p className="recipeCaption">{recipe.title}</p>
+                <li>
+                  <p className="recipeCaption">{recipe.recipe.label}</p>
                 </li>
-                <li><button className="saveRecipeBtn">VIEW</button></li>
+                <li><button
+                    className="saveRecipeBtn"
+                    value={recipe.recipe.label}
+                    onClick={this.selectedRecipeHandler}
+                    >VIEW</button>
+                </li>
               </div>
             )}
           </ul>
@@ -86,4 +104,12 @@ class NewRecipeSearch extends Component {
   }
 }
 
-export default NewRecipeSearch;
+NewRecipeSearch.propTypes = {
+  viewSelectedRecipe: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state) => {
+  recipe: state.recipe
+}
+
+export default connect(mapStateToProps, { viewSelectedRecipe })(withRouter(NewRecipeSearch));

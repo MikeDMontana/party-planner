@@ -4,3 +4,4 @@ export const POST_NEW_PARTY = 'POST_NEW_PARTY';
 export const ADD_NEW_MEMBER = 'ADD_NEW_MEMBER';
 export const POST_NEW_MEAL = 'POST_NEW_MEAL';
 export const PARTY_IS_SELECTED = 'PARTY_IS_SELECTED';
+export const RECIPE_IS_SELECTED = 'RECIPE_IS_SELECTED';

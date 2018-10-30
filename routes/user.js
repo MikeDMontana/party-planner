@@ -100,7 +100,7 @@ router.route('/:user_id/parties/:party_id')
 
 // END of GET Specific Party Route
 
-// GET specific recipe
+// GET specific recipe that is already saved
 router.route('/:user_id/parties/:party_id/meals/:meal_id/recipes/:recipe/view')
   .get(function(req, res) {
     models.User.findById(req.params.user_id, function(err, user) {
@@ -136,17 +136,28 @@ router.route('/:user_id/parties/:party_id/meals/:meal_id/recipes/:recipe/view')
     });
   })
 
-// END of GET Specific Party Route
+// END of GET Specific Recipe Route
 
 // pipe the recipe search Request through proxy server
 // and deliver the response
 router.route('/:user_id/parties/:party_id/meals/:meal_id/recipes/:recipeSearch')
 
   .get(function(req, res) {
-    let url = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?addRecipeInformation=true&fillIngredients=false&instructionsRequired=true&limitLicense=false&number=8&offset=0&query=' + req.params.recipeSearch;
+    let url = 'https://api.edamam.com/search?q=' + req.params.recipeSearch + '&app_id=5cd694d0&app_key=f2f0600b33f16711a3873d9b67cc882f&from=0&to=12&calories=591-722&health=alcohol-free';
     req.pipe(request(url)).pipe(res);
   });
   // end of proxy recipe search
+
+  // pipe the SPECIFIC RECIPE (with Recipe ID) Request through proxy server
+  // and deliver the response
+  router.route('/:user_id/parties/:party_id/meals/:meal_id/recipes/:recipeID')
+
+    .get(function(req, res) {
+      let newUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + req.params.recipeID + 'information?includeNutrition=false';
+      req.pipe(request(newUrl)).pipe(res);
+    });
+    // end of SPECIFIC RECIPE
+
 
 
 router.post('/register', function(req, res) {
