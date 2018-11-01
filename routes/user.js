@@ -148,18 +148,6 @@ router.route('/:user_id/parties/:party_id/meals/:meal_id/recipes/:recipeSearch')
   });
   // end of proxy recipe search
 
-  // pipe the SPECIFIC RECIPE (with Recipe ID) Request through proxy server
-  // and deliver the response
-  router.route('/:user_id/parties/:party_id/meals/:meal_id/recipes/:recipeID')
-
-    .get(function(req, res) {
-      let newUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + req.params.recipeID + 'information?includeNutrition=false';
-      req.pipe(request(newUrl)).pipe(res);
-    });
-    // end of SPECIFIC RECIPE
-
-
-
 router.post('/register', function(req, res) {
 
     const { errors, isValid } = validateRegisterInput(req.body);

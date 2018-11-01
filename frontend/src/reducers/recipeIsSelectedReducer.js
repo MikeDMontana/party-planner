@@ -1,16 +1,16 @@
 import { RECIPE_IS_SELECTED } from '../actions/types';
 
 const initialState = {
-  recipes: []
+  recipe: {}
 }
 
 export default function(state = initialState, action) {
   switch(action.type) {
     case RECIPE_IS_SELECTED:
-      return [
+      return {
         ...state,
-        action.recipe
-      ];
+        recipe: action.recipe
+      };
       default:
         return state;
   }

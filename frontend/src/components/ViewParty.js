@@ -69,12 +69,14 @@ class ViewParty extends Component {
 
 ViewParty.propTypes = {
   auth: PropTypes.object.isRequired,
-  party: PropTypes.object.isRequired
+  party: PropTypes.object.isRequired,
+  meal: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  party: state.party
+  party: state.party,
+  meal: state.meal
 })
 
 export default connect(mapStateToProps, null)(withRouter(ViewParty));

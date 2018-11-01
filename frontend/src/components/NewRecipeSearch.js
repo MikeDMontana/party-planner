@@ -12,7 +12,8 @@ class NewRecipeSearch extends Component {
 
     this.state={
       recipeSearch: '',
-      searchResults: []
+      searchResults: [],
+      selectedRecipe: {},
     };
 
     this.handleSearchChange = this.handleSearchChange.bind(this);
@@ -27,10 +28,13 @@ class NewRecipeSearch extends Component {
   }
 
   selectedRecipeHandler(e) {
-    let recipeID = e.target.value
-    console.log(recipeID);
+    let newlySelectedRecipe = e;
+    let userID = this.props.match.params.user_id;
+    let partyID = this.props.match.params.party_id;
+    let mealID = this.props.match.params.meal_id;
 
-    this.props.viewSelectedRecipe(recipeID);
+    this.props.viewSelectedRecipe(newlySelectedRecipe);
+    this.props.history.push('/' + userID + '/parties/' + partyID + '/meals/' + mealID + '/recipeSearch/viewRecipe');
   }
 
   handleRecipeSubmit(e) {
@@ -50,6 +54,7 @@ class NewRecipeSearch extends Component {
             )
       .then((res) => {
         let newSearchResults = res.data.hits;
+        console.log(newSearchResults);
         this.setState({
           searchResults: newSearchResults
         });
@@ -81,18 +86,18 @@ class NewRecipeSearch extends Component {
         <div className="newRecipeSearchResultsContainer">
           <ul className="recipeResultsList">
             {this.state.searchResults.map((recipe, i) =>
-              <div className="recipeCard">
-                <li>
+              <div className='recipeCard'>
+                <li key={i}>
                   <img src={recipe.recipe.image}
                   alt={recipe.recipe.label + 'display from Mike Dreiling Design and Development'} />
                 </li>
-                <li>
+                <li key={recipe.recipe.label}>
                   <p className="recipeCaption">{recipe.recipe.label}</p>
                 </li>
-                <li><button
+                <li key={recipe.recipe.shareAs}><button
                     className="saveRecipeBtn"
-                    value={recipe.recipe.label}
-                    onClick={this.selectedRecipeHandler}
+                    value={recipe.recipe}
+                    onClick={() => this.selectedRecipeHandler(recipe.recipe)}
                     >VIEW</button>
                 </li>
               </div>
@@ -108,8 +113,8 @@ NewRecipeSearch.propTypes = {
   viewSelectedRecipe: PropTypes.func.isRequired
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => ({
   recipe: state.recipe
-}
+});
 
 export default connect(mapStateToProps, { viewSelectedRecipe })(withRouter(NewRecipeSearch));

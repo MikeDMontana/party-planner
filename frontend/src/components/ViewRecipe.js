@@ -9,57 +9,19 @@ import './styles/profile.css';
 class ViewRecipe extends Component {
   constructor(props) {
     super(props);
-
-    this.findRecipesBtnHandler = this.findRecipesBtnHandler.bind(this);
   }
 
-  findRecipesBtnHandler(mid) {
-    let userID = this.props.match.params.user_id;
-    let partyID = this.props.match.params.party_id;
-    let mealID = mid.target.value;
-
-    this.props.history.push('/' + userID + '/parties/' + partyID + '/meals/' + mealID + '/recipeSearch')
-  }
 
   render() {
-    const {user} = this.props.auth;
-    const {party} = this.props.party;
+    console.log(this.props.recipe);
     return(
       <div className="viewPartyContainer">
         <div className="profileColumn">
-          <h2>{party.partyTitle}</h2>
-          <ul className="userMealsList">
-            {party.meals.map((meal, i) =>
-              <div className="mealListed">
-                <li className="mealTitle"
-                    key={meal.mealTitle}
-                    value={i}
-                    onClick={this.selectedPartyHandler}>
-                  <h3>{meal.mealTitle}</h3>
-                </li>
-                <li className="mealDescription" key={meal.mealDescription}>
-                  {meal.mealDescription ? meal.mealDescription : <em>"No Description Available"</em>}
-                </li>
-                <li>
-                  <button onClick={this.findRecipesBtnHandler}
-                  className="goToRecipeSearchBtn"
-                  value={meal._id}>Find Recipes</button>
-                </li>
-              </div>
-            )}
-            </ul>
+          <h2>View Selected Recipe</h2>
         </div>
 
         <div className="profileColumn">
-          <img
-            src={`images/${user.avatar}.png`}
-            alt={user.name}
-            title={user.name}
-            className="rounded-circle avatarImg"
-          />
-          <div className="sloganContainer">
-            <p><b><em>{user.slogan + " " + " - "}</em></b>{user.name}</p>
-          </div>
+
         </div>
 
       </div>
@@ -68,13 +30,11 @@ class ViewRecipe extends Component {
 }
 
 ViewRecipe.propTypes = {
-  auth: PropTypes.object.isRequired,
-  party: PropTypes.object.isRequired
+  recipe: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
-  party: state.party
+  recipe: state.recipe,
 })
 
 export default connect(mapStateToProps, null)(withRouter(ViewRecipe));

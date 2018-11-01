@@ -17,6 +17,7 @@ import NewParty from './components/NewParty';
 import NewMeal from './components/NewMeal';
 import NewRecipeSearch from './components/NewRecipeSearch';
 import ViewParty from './components/ViewParty';
+import ViewRecipe from './components/ViewRecipe';
 
 const bkgdBlush = require('./images/backgroundBlush.jpg');
 
@@ -51,7 +52,7 @@ class App extends Component {
                 <Route exact path='/:user_id/parties/:party_id' component= { NewMeal } />
                 <Route exact path='/:user_id/parties/:party_id/view' component= { ViewParty } />
                 <Route exact path='/:user_id/parties/:party_id/meals/:meal_id/recipeSearch' component={ NewRecipeSearch } />
-                <Route exact path=':user_id/parties/:party_id/meals/:meal_id/recipes/:recipeID' component={ NewRecipeSearch } />
+                <Route exact path='/:user_id/parties/:party_id/meals/:meal_id/recipeSearch/viewRecipe' component={ ViewRecipe } />
               </div>
             </div>
         </Router>
