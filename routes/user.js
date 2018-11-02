@@ -101,7 +101,7 @@ router.route('/:user_id/parties/:party_id')
 // END of GET Specific Party Route
 
 // GET specific recipe that is already saved
-router.route('/:user_id/parties/:party_id/meals/:meal_id/recipes/:recipe/view')
+router.route('/:user_id/parties/:party_id/meals/:meal_id/recipes/viewrecipe')
   .get(function(req, res) {
     models.User.findById(req.params.user_id, function(err, user) {
       if (err)
@@ -117,10 +117,9 @@ router.route('/:user_id/parties/:party_id/meals/:meal_id/recipes/:recipe/view')
         res.send(err);
 
         let newRecipe = new models.Recipe({
-          recipeType: req.body.recipeType,
           recipeName: req.body.recipeName,
           ingredients: req.body.ingredients,
-          recipeDirections: req.body.recipeDirections,
+          recipeLink: req.body.recipeLink,
           upvotes: req.body.upvotes,
           downvotes: req.body.downvotes
         });
