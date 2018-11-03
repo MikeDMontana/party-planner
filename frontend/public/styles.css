@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
 @import url('https://fonts.googleapis.com/css?family=Allerta');
 
 body {
-  background:url("backgroundBlush.jpg");
+  background-image: linear-gradient(180deg, #84fab0 0%, #8fd3f4 100%);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -35,9 +35,10 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Abril Fatface";
+  font-family: "Merriweather";
   margin: 0em;
   padding: 0em;
+  font-weight: 700;
 }
 
 p, ol, ul, caption {

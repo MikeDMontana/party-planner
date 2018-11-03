@@ -4,11 +4,19 @@
   height: 100%;
   width: 100%;
   overflow: auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 .newRecipeSearchResultsContainer {
   overflow: scroll;
   height: 100%;
+  width: 65%;
+  padding: 6em 1em 0em 0em;
+  position: fixed;
+  right: 0;
+  background-color: #1b1464;
+  top: 0;
 }
 
 .recipeResultsList {
@@ -18,18 +26,17 @@
   flex-wrap: wrap;
   overflow: scroll;
   list-style: none;
-  width: 95%;
-  height: 65%;
-  padding: 0;
-  margin-top: 150px;
+  width: 100%;
+  height: 85%;
+  display: flex;
+  padding: 0 3em 0 0;
 }
 
 .recipeCard {
-  width: 312px;
+  width: 25%;
   background-color: rgba(255, 255, 255, 0.2);
-  margin: 1em;
   border-radius: 5%;
-  height: 231px;
+  height: 150px;
   overflow: hidden;
   transition: all .5s ease-in;
   padding: 10px;
@@ -40,7 +47,7 @@
 
 .recipeCard:hover {
   max-height: 450px;
-  height: 420px;
+  height: 350px;
   transition: all .5s ease-in;
   background-color: rgba(200, 200, 200, 0.6);
 }
@@ -50,7 +57,7 @@
 }
 
 .recipeResultsList li img {
-  min-width: 100%;
+  width: 100%;
   border-radius: 5%;
 }
 
@@ -60,14 +67,12 @@
 }
 
 .newRecipeSearchTop {
-  width: 100%;
-  position: fixed;
-  background-color: rgba(255, 255, 255, 0.8);
+  width: 30%;
   margin: 0;
   padding: 0;
-  top: 120px;
-  left: 0;
-  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .newRecipeSearchForm {
@@ -101,7 +106,8 @@ p em:hover {
   border: 2px solid darkblue;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 12px;
+  color: darkblue;
   margin: 1em auto;
   cursor: pointer;
   transition: all 0.7s ease-in;

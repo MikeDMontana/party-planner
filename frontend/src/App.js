@@ -19,9 +19,6 @@ import NewRecipeSearch from './components/NewRecipeSearch';
 import ViewParty from './components/ViewParty';
 import ViewRecipe from './components/ViewRecipe';
 
-const bkgdBlush = require('./images/backgroundBlush.jpg');
-
-
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);

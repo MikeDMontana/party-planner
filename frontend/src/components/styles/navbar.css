@@ -1,8 +1,9 @@
 .navbar {
-  padding: 2em 3em;
+  padding: 2em 3em 1em 3em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  z-index: 1;
 }
 
 .navbar ul {
@@ -10,11 +11,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  z-index: 1;
 }
 
 .navbar ul li {
   padding-left: 2em;
   text-transform: uppercase;
+  z-index: 100;
 }
 
 .navbar a {
