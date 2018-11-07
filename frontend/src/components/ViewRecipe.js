@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import './styles/profile.css';
+import './styles/viewrecipe.css';
 
 class ViewRecipe extends Component {
   constructor(props) {
@@ -15,6 +15,8 @@ class ViewRecipe extends Component {
       recipeName: this.props.recipe.recipe.label,
       ingredients: this.props.recipe.recipe.ingredientLines,
       recipeLink: this.props.recipe.recipe.url,
+      recipeImage: this.props.recipe.recipe.image,
+      healthLabels: this.props.recipe.recipe.healthLabels,
       upvotes: 0,
       downvotes: 0
     }
@@ -26,6 +28,7 @@ class ViewRecipe extends Component {
       recipeName: this.state.recipeName,
       ingredients: this.state.ingredients,
       recipeLink: this.state.recipeLink,
+      recipeImage: this.state.recipeImage,
       upvotes: 0,
       downvotes: 0
     }
@@ -43,22 +46,41 @@ class ViewRecipe extends Component {
 
   render() {
     return(
-      <div className="viewPartyContainer">
-        <div className="profileColumn">
-          <h2>{this.state.recipeName}</h2>
-          <ul className="recipeIngredients">
-            {this.state.ingredients.map((ingredient, i) =>
-                <li className="recipeItem" key={i}>
-                  {ingredient}
-                </li>
-            )}
-          </ul>
-          <a href={this.state.recipeLink} className="primaryBtn recipeLinkBtn">Go To Recipe</a>
+      <div className="viewRecipeContainer">
+        <div className="recipeLeftSide">
           <button className="primaryBtn saveRecipeBtn" onClick={this.saveRecipeHandler}>SAVE RECIPE!</button>
+          <button className="primaryBtn goToRecipeSearchBtn">... OR KEEP SEARCHING</button>
         </div>
 
-        <div className="profileColumn">
-
+        <div className="recipeRightSide">
+          <div className="recipeRightHeader">
+            <div>
+              <h2>{this.state.recipeName}</h2>
+              <a href={this.state.recipeLink} className="recipeLinkBtn" target="_blank">Go To Recipe Website</a>
+            </div>
+            <img src={this.state.recipeImage} alt="Image of Recipe"/>
+          </div>
+          <div className="recipeRightBottom">
+            <div className="ingredientList">
+              <h4>INGREDIENTS</h4>
+              <ul className="recipeIngredients">
+                {this.state.ingredients.map((ingredient, i) =>
+                    <li className="recipeItem" key={i}>
+                      {ingredient}
+                    </li>
+                )}
+              </ul>
+            </div>
+            <div>
+              <ul className="recipeHealthIngredients">
+                {this.state.healthLabels.map((healthLbl, i) =>
+                  <li className="healthLabelItem" key={healthLbl}>
+                    {healthLbl}
+                  </li>
+                )}
+              </ul>
+            </div>
+          </div>
         </div>
 
       </div>

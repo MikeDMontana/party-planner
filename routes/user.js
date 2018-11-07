@@ -120,6 +120,7 @@ router.route('/:user_id/parties/:party_id/meals/:meal_id/recipes/viewrecipe')
           recipeName: req.body.recipeName,
           ingredients: req.body.ingredients,
           recipeLink: req.body.recipeLink,
+          recipeImage: req.body.recipeImage,
           upvotes: req.body.upvotes,
           downvotes: req.body.downvotes
         });

@@ -12,6 +12,9 @@ const RecipeSchema = new Schema({
   recipeLink: {
     type: String
   },
+  recipeImage: {
+    type: String
+  },
   upvotes: {
     type: Number
   },

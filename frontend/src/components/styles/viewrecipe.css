@@ -1,0 +1,139 @@
+.viewRecipeContainer {
+  display: flex;
+  height: 80%;
+}
+
+.recipeLeftSide {
+  width: 35%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.recipeRightSide {
+  height: 100%;
+  width: 65%;
+  padding: 6em 1em 0em 0em;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-image: url('../../images/blueArrow.png');
+  background-repeat: repeat-y;
+}
+
+.recipeRightHeader {
+  display: flex;
+  flex-direction: row;
+  padding: 1em 5em 0em 8em;
+}
+
+.recipeRightSide h2 {
+  color: darkorange;
+  margin-bottom: 20px;
+  padding-right: 20px;
+}
+
+.recipeHeader img {
+  height: 200px;
+  width: 200px;
+}
+
+.recipeLinkBtn {
+  color: white;
+  border: 1px solid white;
+  text-decoration: none;
+  padding: .8em;
+  text-transform: uppercase;
+  font-family: "Merriweather";
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.recipeRightBottom {
+  display: flex;
+  padding: 2em 5em 0em 8em;
+}
+
+.recipeRightBottom h4 {
+  color: darkorange;
+}
+
+.recipeIngredients {
+  color: white;
+  font-family: "Merriweather";
+  font-weight: 600;
+  line-height: 1.3em;
+  list-style: none;
+  padding: .5em 0em;
+  margin: 0em;
+  font-size: smaller;
+}
+
+.healthLabelItem {
+  color: white;
+  font-family: "Merriweather";
+  font-weight: 600;
+  line-height: 1.3em;
+  list-style: none;
+  padding: .8em;
+  border-radius: 1em;
+  margin: 0em;
+  margin-bottom: 1em;
+  font-size: smaller;
+  border: 2px solid lightgray;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.recipeIngredients li {
+  margin-bottom: .3em;
+}
+
+.recipeIngredients li::before, .healthLabelItem::before {
+  content: "\2713";
+  color: orange;
+  font-size: x-large;
+  margin-right: 10px;
+}
+
+.goToRecipeSearchBtn {
+  width: 60%;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  border: 2px solid darkred;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin: 1em auto;
+  cursor: pointer;
+  transition: all 0.7s ease-in;
+}
+
+.goToRecipeSearchBtn:hover {
+  background-color: lightgray;
+  border-radius: 2em;
+  transition: all 0.7s ease-in;
+}
+
+.saveRecipeBtn {
+  width: 60%;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  border: 2px solid darkgreen;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin: 0em auto;
+  cursor: pointer;
+  transition: all 0.7s ease-in;
+}
+
+.saveRecipeBtn:hover {
+  background-color: lightgray;
+  border-radius: 2em;
+  transition: all 0.7s ease-in;
+}

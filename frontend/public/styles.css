@@ -2,9 +2,10 @@
 @import url('https://fonts.googleapis.com/css?family=Allerta');
 
 body {
-  background-image: linear-gradient(180deg, #84fab0 0%, #8fd3f4 100%);
+  background-image: url("images/bkgdWave.png"), linear-gradient(180deg, #84fab0 0%, #8fd3f4 100%);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
   height: 100vh;
   overflow: hidden;
 }
@@ -39,6 +40,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0em;
   padding: 0em;
   font-weight: 700;
+  color: #1b1464;
 }
 
 p, ol, ul, caption {

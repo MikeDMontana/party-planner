@@ -49,7 +49,7 @@ class App extends Component {
                 <Route exact path='/:user_id/parties/:party_id' component= { NewMeal } />
                 <Route exact path='/:user_id/parties/:party_id/view' component= { ViewParty } />
                 <Route exact path='/:user_id/parties/:party_id/meals/:meal_id/recipeSearch' component={ NewRecipeSearch } />
-                <Route exact path='/:user_id/parties/:party_id/meals/:meal_id/recipeSearch/viewRecipe' component={ ViewRecipe } />
+                <Route exact path='/:user_id/parties/:party_id/meals/:meal_id/recipeSearch/viewrecipe' component={ ViewRecipe } />
               </div>
             </div>
         </Router>
