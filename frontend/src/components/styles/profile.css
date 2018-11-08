@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 0em 150px;
 }
 
 .profileColumn {
@@ -10,4 +11,89 @@
 
 .avatarImg {
   width: 100%;
+}
+
+.partyDate {
+  padding: 1em;
+  background-color: black;
+  border-radius: 4em;
+  font-size: small;
+  color: white;
+}
+
+.partyTitle {
+  position: relative;
+  cursor: pointer;
+  padding-top: 10px;
+  margin-left: 10px;
+  font-family: "Merriweather";
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.partyTitle .partyDescription {
+  display: none;
+  position: absolute;
+  top: -45px;
+  left: 50px;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: .4em;
+  color: black;
+  transition: all .5s ease-in;
+}
+
+.partyTitle:hover .partyDescription {
+  display: inline;
+  transition: all .5s ease-in;
+  font-size: small;
+}
+
+.partyListed {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-top: 10px;
+  padding: .5em;
+  border-bottom: 2px solid #1b1464;
+  background-color: lightblue;
+}
+
+.partyListed:hover {
+  background-color: #1b1464;
+  color: white;
+  transition: all .5s ease-in;
+  border-bottom: 2px solid white;
+}
+
+.userPartiesList {
+  list-style: none;
+  padding: 0 2em 0em 0em;
+}
+
+.createNewPartyBtn {
+  margin: 0 25% 0 15%;
+  text-align: center;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  border: 2px solid #1b1464;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-top: 1em;
+  cursor: pointer;
+  transition: all 0.7s ease-in;
+}
+
+.createNewPartyBtn:hover {
+  background-color: lightgray;
+  border-radius: 2em;
+  transition: all 0.7s ease-in;
+}
+
+.createNewPartyBtn a {
+  text-decoration: none;
+  color: #1b1464;
 }

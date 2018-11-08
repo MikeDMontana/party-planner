@@ -30,19 +30,24 @@ class Profile extends Component {
           <ul className="userPartiesList">
             {user.parties.map((party, i) =>
               <div className="partyListed">
+                <li key={party._id} className="partyDate">
+                  {party.date != null
+                    ? party.date.charAt(5) + party.date.charAt(6) + '/' + party.date.charAt(8) + party.date.charAt(9)
+                    : "?"}
+                </li>
                 <li className="partyTitle"
                     key={party.partyTitle}
                     value={i}
                     onClick={this.selectedPartyHandler}>
                   {party.partyTitle}
-                </li>
-                <li className="partyDescription" key={party.partyDescription}>
-                  {party.partyDescription ? party.partyDescription : <em>"No Description Available"</em>}
+                  <span className="partyDescription">{party.partyDescription ? party.partyDescription : "No Description Available"}</span>
                 </li>
               </div>
             )}
           </ul>
-          <Link to="/newparty">Create A New Party</Link>
+          <div className="createNewPartyBtn">
+            <Link to="/newparty">Create A New Party</Link>
+          </div>
         </div>
 
         <div className="profileColumn">
@@ -64,6 +69,11 @@ class Profile extends Component {
     );
   }
 }
+
+// <li key={party.date}>
+//   {party.date.charAt(5) + party.date.charAt(6) + '/' + party.date.charAt(8) + party.date.charAt(9)}
+// </li>
+
 
 Profile.propTypes = {
   auth: PropTypes.object.isRequired,
