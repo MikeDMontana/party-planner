@@ -57,13 +57,15 @@
   padding: .5em;
   border-bottom: 2px solid #1b1464;
   background-color: lightblue;
+  transition: all .2s ease-in;
 }
 
 .partyListed:hover {
   background-color: #1b1464;
   color: white;
-  transition: all .5s ease-in;
+  transition: all .2s ease-in;
   border-bottom: 2px solid white;
+  color: orange;
 }
 
 .userPartiesList {

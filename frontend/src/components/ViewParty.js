@@ -51,12 +51,12 @@ class ViewParty extends Component {
         </div>
 
         <div className="profileColumn">
-          <img
-            src={`images/${user.avatar}.png`}
-            alt={user.name}
-            title={user.name}
-            className="rounded-circle avatarImg"
-          />
+        <img
+          src={"/" + `images/${user.avatar}.png`}
+          alt={user.name}
+          title={user.name}
+          className="rounded-circle avatarImg"
+        />
           <div className="sloganContainer">
             <p><b><em>{user.slogan + " " + " - "}</em></b>{user.name}</p>
           </div>
