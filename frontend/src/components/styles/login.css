@@ -1,10 +1,10 @@
 .loginContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: 0 auto;
-  padding: 2em 5em;
-  width: 60%;
-  height: 100vh;
+  padding: 2em 3em 0em 5em;
+  width: 100%;
+  height: 80vh;
 }
 
 .loginUserBtn {
@@ -25,4 +25,30 @@
   background-color: lightgray;
   border-radius: 2em;
   transition: all 0.7s ease-in;
+}
+
+.loginLeftSide {
+  width: 30%;
+  overflow: auto;
+}
+
+.loginLeftSide img {
+  width: 100%;
+}
+
+.loginRightSide {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  justify-content: center;
+  height: 80%;
+  margin-left: 5%;
+}
+
+.emailInput, .passwordInput {
+  width: 70%;
+}
+
+.emailInput:focus, .passwordInput:focus {
+  width: 71%;
 }

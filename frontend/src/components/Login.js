@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { loginUser } from '../actions/authentication';
 import classnames from 'classnames';
 
+import coffee from '../images/coffeeNoCircle.png'
+
 import './styles/login.css';
 
 class Login extends Component {
@@ -54,39 +56,44 @@ class Login extends Component {
     const {errors} = this.state;
     return(
       <div className="loginContainer">
-        <form onSubmit={ this.handleSubmit }>
-          <div>
-            <input
-            type="email"
-            placeholder="Email"
-            className={classnames("foodieInputs emailInput", {
-              'is-invalid': errors.email
-            })}
-            name="email"
-            onChange={ this.handleInputChange }
-            value={ this.state.email }
-            />
-            {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-          </div>
-          <div>
-            <input
-            type="password"
-            placeholder="Password"
-            className={classnames("foodieInputs passwordInput", {
-              'is-invalid': errors.password
-            })}
-            name="password"
-            onChange={ this.handleInputChange }
-            value={ this.state.password }
-            />
-            {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
-          </div>
-          <div>
-            <button type="submit" className="primaryBtn loginUserBtn">
-              Login user
-            </button>
-          </div>
-        </form>
+        <div className="loginLeftSide">
+          <img src={coffee} alt="coffee cup illustration by Mike Dreiling Design and Development" />
+        </div>
+        <div className="loginRightSide">
+          <form onSubmit={ this.handleSubmit }>
+            <div>
+              <input
+              type="email"
+              placeholder="Email"
+              className={classnames("foodieInputs emailInput", {
+                'is-invalid': errors.email
+              })}
+              name="email"
+              onChange={ this.handleInputChange }
+              value={ this.state.email }
+              />
+              {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
+            </div>
+            <div>
+              <input
+              type="password"
+              placeholder="Password"
+              className={classnames("foodieInputs passwordInput", {
+                'is-invalid': errors.password
+              })}
+              name="password"
+              onChange={ this.handleInputChange }
+              value={ this.state.password }
+              />
+              {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
+            </div>
+            <div>
+              <button type="submit" className="primaryBtn loginUserBtn">
+                Login user
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
