@@ -37,3 +37,24 @@
   border-radius: 2em;
   transition: all 0.7s ease-in;
 }
+
+.membersList {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  justify-content: flex-start;
+  font-style: italic;
+  font-family: "Merriweather";
+  font-weight: 700;
+  color: darkblue;
+}
+
+.membersList li {
+  margin-right: 25px;
+}
+
+.membersList li::before {
+  content: "\2713";
+  color: darkgreen;
+  font-size: x-large;
+}

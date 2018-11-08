@@ -44,7 +44,11 @@ class AddNewMember extends Component {
         />
         <button
         onClick={this.submitNewMember}
-        className="addNewMemberBtn">SUBMIT</button>
+        className="addNewMemberBtn">ADD MEMBER!</button>
+        {this.props.members.length > 0
+           ? <ul className="membersList">{this.props.members.map(showMember => <li>{showMember}</li>)}</ul>
+           : <p>No Members Added Yet</p>
+        }
       </div>
     );
   }

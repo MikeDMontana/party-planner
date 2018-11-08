@@ -45,7 +45,6 @@ class NewParty extends Component {
   // the user will also add member by member emails to the party
 
   render() {
-    console.log(this.props.members);
     const {user} = this.props.auth;
     return (
       <div className="newPartyContainer">
