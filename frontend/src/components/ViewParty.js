@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import coffee from '../images/coffeeNoCircle.png'
 
 import './styles/profile.css';
 
@@ -26,40 +27,37 @@ class ViewParty extends Component {
     const {party} = this.props.party;
     return(
       <div className="viewPartyContainer">
-        <div className="profileColumn">
-          <h2>{party.partyTitle}</h2>
+        <div className="profileColumnLeft">
+          <h2 className="profilePartiesTitle">{party.partyTitle}<span className="partiesLengthMeta">{' (' + party.meals.length + ') meals total'}</span></h2>
           <ul className="userMealsList">
-            {party.meals.map((meal, i) =>
-              <div className="mealListed">
+          {party.meals.map((meal, i) =>
+            <div className="mealListed">
+              <div className="mealTitleRow">
+                <li className="mealDate">{i + 1}</li>
                 <li className="mealTitle"
                     key={meal.mealTitle}
                     value={i}
                     onClick={this.selectedPartyHandler}>
                   <h3>{meal.mealTitle}</h3>
                 </li>
+              </div>
                 <li className="mealDescription" key={meal.mealDescription}>
                   {meal.mealDescription ? meal.mealDescription : <em>"No Description Available"</em>}
                 </li>
-                <li>
-                  <button onClick={this.findRecipesBtnHandler}
-                  className="goToRecipeSearchBtn"
-                  value={meal._id}>Find Recipes</button>
-                </li>
-              </div>
-            )}
+                <button onClick={this.findRecipesBtnHandler}
+                className="findRecipesBtn"
+                value={meal._id}>Find Recipes</button>
+            </div>
+          )}
             </ul>
         </div>
 
-        <div className="profileColumn">
+        <div className="profileColumnRight">
         <img
-          src={"/" + `images/${user.avatar}.png`}
-          alt={user.name}
-          title={user.name}
-          className="rounded-circle avatarImg"
+          src={coffee}
+          className="characterIlloRight"
+          alt="character Illustration by Mike Dreiling Design And Development"
         />
-          <div className="sloganContainer">
-            <p><b><em>{user.slogan + " " + " - "}</em></b>{user.name}</p>
-          </div>
         </div>
 
       </div>

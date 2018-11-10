@@ -83,7 +83,7 @@ class Register extends Component {
           }
         </div>
         <div className="registerForm">
-          <h2>Please Choose An Avatar, And Create A Login To Get Started!</h2>
+          <h2>Please Choose An Avatar, <br />And Create A Profile To Get Started!</h2>
           <form onSubmit={ this.handleSubmit }>
             <div>
               <input

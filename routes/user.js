@@ -169,7 +169,8 @@ router.post('/register', function(req, res) {
                 email: req.body.email,
                 password: req.body.password,
                 avatar: req.body.avatar,
-                slogan: req.body.slogan
+                slogan: req.body.slogan,
+                date: new Date()
             });
 
             bcrypt.genSalt(10, (err, salt) => {
@@ -217,7 +218,8 @@ router.post('/login', (req, res) => {
               name: user.name,
               avatar: user.avatar,
               slogan: user.slogan,
-              parties: user.parties
+              parties: user.parties,
+              date: user.date
             }
             jwt.sign(payload, 'secret', {
               expiresIn: 3600

@@ -23,10 +23,11 @@ class Profile extends Component {
 
   render() {
     const {user} = this.props.auth;
+    console.log(user);
     return(
       <div className="profileContainer">
-        <div className="profileColumn">
-          <h2>Parties</h2>
+        <div className="profileColumnLeft">
+          <h2 className="profilePartiesTitle">Parties<span className="partiesLengthMeta">{' (' + user.parties.length + ') total'}</span></h2>
           <ul className="userPartiesList">
             {user.parties.map((party, i) =>
               <div className="partyListed">
@@ -50,7 +51,7 @@ class Profile extends Component {
           </div>
         </div>
 
-        <div className="profileColumn">
+        <div className="profileColumnRight">
           <img
             src={`images/${user.avatar}.png`}
             alt={user.name}
@@ -60,19 +61,17 @@ class Profile extends Component {
           <div className="sloganContainer">
             <p><b><em>{user.slogan + " " + " - "}</em></b>{user.name}</p>
           </div>
-        </div>
-
-        <div className="profileColumn">
-          <h2>Friends</h2>
+          <p className="userMeta">
+          User since {user.date.charAt(5) + user.date.charAt(6) + '/'
+          + user.date.charAt(8) + user.date.charAt(9) + '/'
+          + user.date.charAt(2) + user.date.charAt(3)}
+          </p>
         </div>
       </div>
     );
   }
 }
 
-// <li key={party.date}>
-//   {party.date.charAt(5) + party.date.charAt(6) + '/' + party.date.charAt(8) + party.date.charAt(9)}
-// </li>
 
 
 Profile.propTypes = {
