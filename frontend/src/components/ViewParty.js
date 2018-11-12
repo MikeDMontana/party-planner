@@ -12,6 +12,7 @@ class ViewParty extends Component {
     super(props);
 
     this.findRecipesBtnHandler = this.findRecipesBtnHandler.bind(this);
+    this.selectedMealHandler = this.selectedMealHandler.bind(this);
   }
 
   findRecipesBtnHandler(mid) {
@@ -20,6 +21,14 @@ class ViewParty extends Component {
     let mealID = mid.target.value;
 
     this.props.history.push('/' + userID + '/parties/' + partyID + '/meals/' + mealID + '/recipeSearch')
+  }
+
+  selectedMealHandler(e) {
+    let userID = this.props.match.params.user_id;
+    let partyID = this.props.match.params.party_id;
+    let selectedMeal = this.props.party.party.meals[e.target.value]._id;
+
+    this.props.history.push('/' + userID + '/parties/' + partyID + '/meals/' + selectedMeal + '/view')
   }
 
   render() {
@@ -34,11 +43,9 @@ class ViewParty extends Component {
             <div className="mealListed">
               <div className="mealTitleRow">
                 <li className="mealDate">{i + 1}</li>
-                <li className="mealTitle"
-                    key={meal.mealTitle}
-                    value={i}
-                    onClick={this.selectedPartyHandler}>
-                  <h3>{meal.mealTitle}</h3>
+                <li className="mealTitle" key={meal.mealTitle}
+                  value={i} onClick={this.selectedMealHandler}>
+                  {meal.mealTitle}
                 </li>
               </div>
                 <li className="mealDescription" key={meal.mealDescription}>

@@ -18,6 +18,7 @@ import NewMeal from './components/NewMeal';
 import NewRecipeSearch from './components/NewRecipeSearch';
 import ViewParty from './components/ViewParty';
 import ViewRecipe from './components/ViewRecipe';
+import ViewMeal from './components/ViewMeal';
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -50,6 +51,7 @@ class App extends Component {
                 <Route exact path='/:user_id/parties/:party_id/view' component= { ViewParty } />
                 <Route exact path='/:user_id/parties/:party_id/meals/:meal_id/recipeSearch' component={ NewRecipeSearch } />
                 <Route exact path='/:user_id/parties/:party_id/meals/:meal_id/recipeSearch/viewrecipe' component={ ViewRecipe } />
+                <Route exact path='/:user_id/parties/:party_id/meals/:meal_id/view' component={ ViewMeal } />
               </div>
             </div>
         </Router>
