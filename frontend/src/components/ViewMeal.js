@@ -23,46 +23,43 @@ class ViewMeal extends Component {
   }
 
   render() {
-    // const {meal} = this.props.meal;
+    const {meal} = this.props.meal;
     return(
       <div className="viewMealContainer">
-        <h1>Current Meal</h1>
+      <div className="profileColumnLeft">
+        <h2 className="profileMealTitle">{meal.mealTitle}<span className="partiesLengthMeta">{' (' + meal.recipes.length + ') recipes total'}</span></h2>
+        <ul className="userMealsList">
+        {meal.recipes.map((recipe, i) =>
+          <div className="recipesListed">
+            <div className="recipeTitleRow">
+              <li className="recipeDate">{i + 1}</li>
+              <li className="recipeTitle" key={recipe.recipeName}>
+                <h3>{recipe.recipeName}</h3>
+              </li>
+            </div>
+              <li className="recipeLink" key={recipe.recipeLink}>
+                <a href={recipe.recipeLink} target="_blank" alt="view full recipe">VIEW FULL RECIPE</a>
+              </li>
+              <button onClick={this.findRecipesBtnHandler}
+              className="findRecipesBtn"
+              value={this.props.meal._id}>Find Recipes</button>
+          </div>
+        )}
+          </ul>
+      </div>
+
+      <div className="profileColumnRight">
+      <img
+        src={coffee}
+        className="characterIlloRight"
+        alt="character Illustration by Mike Dreiling Design And Development"
+      />
+      </div>
+
       </div>
     );
   }
 }
-
-// <div className="profileColumnLeft">
-//   <h2 className="profileMealTitle">{meal.mealTitle}<span className="partiesLengthMeta">{' (' + meal.recipes.length + ') recipes total'}</span></h2>
-//   <ul className="userMealsList">
-//   {meal.recipes.map((recipe, i) =>
-//     <div className="recipesListed">
-//       <div className="recipeTitleRow">
-//         <li className="recipeDate">{i + 1}</li>
-//         <li className="recipeTitle" key={recipe.recipeName}>
-//           <h3>{recipe.recipeName}</h3>
-//         </li>
-//       </div>
-//         <li className="recipeLink" key={recipe.recipeLink}>
-//           <a href={recipe.recipeLink} target="_blank" alt="view full recipe">VIEW FULL RECIPE</a>
-//         </li>
-//         <button onClick={this.findRecipesBtnHandler}
-//         className="findRecipesBtn"
-//         value={this.props.meal._id}>Find Recipes</button>
-//     </div>
-//   )}
-//     </ul>
-// </div>
-//
-// <div className="profileColumnRight">
-// <img
-//   src={coffee}
-//   className="characterIlloRight"
-//   alt="character Illustration by Mike Dreiling Design And Development"
-// />
-// </div>
-
-
 
 ViewMeal.propTypes = {
   auth: PropTypes.object.isRequired,

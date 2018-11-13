@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { viewSelectedMeal } from '../actions/viewSelectedMealActionCreator';
 import coffee from '../images/coffeeNoCircle.png'
 
 import './styles/profile.css';
@@ -26,9 +27,10 @@ class ViewParty extends Component {
   selectedMealHandler(e) {
     let userID = this.props.match.params.user_id;
     let partyID = this.props.match.params.party_id;
-    let selectedMeal = this.props.party.party.meals[e.target.value]._id;
+    let selectedMeal = this.props.party.party.meals[e.target.value];
 
-    this.props.history.push('/' + userID + '/parties/' + partyID + '/meals/' + selectedMeal + '/view')
+    this.props.viewSelectedMeal(selectedMeal);
+    this.props.history.push('/' + userID + '/parties/' + partyID + '/meals/' + selectedMeal._id + '/view')
   }
 
   render() {
@@ -75,7 +77,8 @@ class ViewParty extends Component {
 ViewParty.propTypes = {
   auth: PropTypes.object.isRequired,
   party: PropTypes.object.isRequired,
-  meal: PropTypes.object.isRequired
+  meal: PropTypes.object.isRequired,
+  viewSelectedMeal: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -84,4 +87,4 @@ const mapStateToProps = (state) => ({
   meal: state.meal
 })
 
-export default connect(mapStateToProps, null)(withRouter(ViewParty));
+export default connect(mapStateToProps, {viewSelectedMeal})(withRouter(ViewParty));

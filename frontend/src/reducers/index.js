@@ -4,11 +4,13 @@ import authReducer from './authReducer';
 import addNewMemberReducer from './addNewMemberReducer';
 import partyIsSelectedReducer from './partyIsSelectedReducer';
 import recipeIsSelectedReducer from './recipeIsSelectedReducer';
+import mealIsSelectedReducer from './mealIsSelectedReducer';
 
 export default combineReducers({
   errors: errorReducer,
   auth: authReducer,
   members: addNewMemberReducer,
   party: partyIsSelectedReducer,
-  recipe: recipeIsSelectedReducer
+  recipe: recipeIsSelectedReducer,
+  meal: mealIsSelectedReducer
 });
