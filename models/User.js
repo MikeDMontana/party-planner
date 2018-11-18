@@ -8,12 +8,15 @@ const RecipeSchema = new Schema({
   },
   ingredients: {
     type: Array
-  },  // []
+  },
   recipeLink: {
     type: String
   },
   recipeImage: {
     type: String
+  },
+  healthLabels: {
+    type: Array
   },
   upvotes: {
     type: Number

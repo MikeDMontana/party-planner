@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import coffee from '../images/coffeeNoCircle.png'
 
 import './styles/profile.css';
+import './styles/viewrecipe.css';
 
 class ViewMeal extends Component {
   constructor(props) {
@@ -26,36 +27,51 @@ class ViewMeal extends Component {
     const {meal} = this.props.meal;
     return(
       <div className="viewMealContainer">
-      <div className="profileColumnLeft">
-        <h2 className="profileMealTitle">{meal.mealTitle}<span className="partiesLengthMeta">{' (' + meal.recipes.length + ') recipes total'}</span></h2>
-        <ul className="userMealsList">
-        {meal.recipes.map((recipe, i) =>
-          <div className="recipesListed">
-            <div className="recipeTitleRow">
-              <li className="recipeDate">{i + 1}</li>
-              <li className="recipeTitle" key={recipe.recipeName}>
-                <h3>{recipe.recipeName}</h3>
-              </li>
+        <div className="profileColumnLeft">
+          <img src={coffee} alt="food illustration by Mike Dreiling Design and Development" />
+          <h2 className="profileMealTitle">{meal.mealTitle}<span className="partiesLengthMeta">{' (' + meal.recipes.length + ') recipes total'}</span></h2>
+          <button className="deleteRecipeBtn">DELETE MEAL</button>
+          <button className="goToRecipeSearchBtn">SEARCH FOR MORE RECIPES</button>
+        </div>
+
+        <div className="recipeRightSide">
+
+          <ul className="userMealsList">
+          {meal.recipes.map((recipe, i) =>
+            <div className="recipeListed">
+              <div className="recipeRightHeader">
+                <div>
+                  <h2>{recipe.recipeName}</h2>
+                  <a href={recipe.recipeLink} className="recipeLinkBtn" target="_blank">Go To Recipe Website</a>
+                </div>
+                <img src={recipe.recipeImage} alt="Image of Recipe" />
+              </div>
+
+              <div className="recipeRightBottom">
+                <div className="ingredientList">
+                  <h4>INGREDIENTS</h4>
+                  <ul className="recipeIngredients">
+                    {recipe.ingredients.map((ingredient, i) =>
+                      <li className="recipeIngredient" key={ingredient}>
+                        {ingredient}
+                      </li>
+                    )}
+                  </ul>
+                </div>
+                <div>
+                  <ul className="recipeHealthIngredients">
+                    {recipe.healthLabels.map((healthLbl, i) =>
+                      <li className="healthLabelItem" key={healthLbl}>
+                        {healthLbl}
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              </div>
             </div>
-              <li className="recipeLink" key={recipe.recipeLink}>
-                <a href={recipe.recipeLink} target="_blank" alt="view full recipe">VIEW FULL RECIPE</a>
-              </li>
-              <button onClick={this.findRecipesBtnHandler}
-              className="findRecipesBtn"
-              value={this.props.meal._id}>Find Recipes</button>
-          </div>
-        )}
-          </ul>
-      </div>
-
-      <div className="profileColumnRight">
-      <img
-        src={coffee}
-        className="characterIlloRight"
-        alt="character Illustration by Mike Dreiling Design And Development"
-      />
-      </div>
-
+          )}
+            </ul>
+        </div>
       </div>
     );
   }

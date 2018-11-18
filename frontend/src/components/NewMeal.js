@@ -28,6 +28,7 @@ class NewMeal extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log("auth" + this.props.auth);
     let userID = this.props.match.params.user_id;
     let partyID = this.props.match.params.party_id;
 

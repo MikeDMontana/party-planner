@@ -138,7 +138,7 @@
   width: 80%;
 }
 
-.createNewPartyBtn {
+.createNewPartyBtn, .createNewMealBtn {
   margin: 0 25% 0 15%;
   text-align: center;
   width: 50%;
@@ -154,13 +154,13 @@
   transition: all 0.7s ease-in;
 }
 
-.createNewPartyBtn:hover {
+.createNewPartyBtn:hover, .createNewMealBtn:hover {
   background-color: lightgray;
   border-radius: 2em;
   transition: all 0.7s ease-in;
 }
 
-.createNewPartyBtn a {
+.createNewPartyBtn a, .createNewMealBtn a {
   text-decoration: none;
   color: #1b1464;
 }

@@ -24,9 +24,23 @@ app.use((req, res, next) => {
   next();
 });
 // =====================================================
+
+// user>parties used for GET all parties
+router.route('/:user_id/parties')
+
+  .get(function(req, res) {
+    models.User.findById(req.params.user_id, function(err, user) {
+      if (err)
+        res.send(err);
+
+        res.json(user.parties);
+    });
+  });
+
+// =================================================================
+
 // find user by ID
 // then update user with party sent to route
-
 router.route('/:user_id/newParty')
 
   .get(function(req, res) {
@@ -121,6 +135,7 @@ router.route('/:user_id/parties/:party_id/meals/:meal_id/recipes/viewrecipe')
           ingredients: req.body.ingredients,
           recipeLink: req.body.recipeLink,
           recipeImage: req.body.recipeImage,
+          healthLabels: req.body.healthLabels,
           upvotes: req.body.upvotes,
           downvotes: req.body.downvotes
         });

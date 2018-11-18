@@ -1,6 +1,11 @@
-.viewRecipeContainer {
+.viewRecipeContainer, .viewMealContainer {
   display: flex;
   height: 80%;
+}
+
+.viewMealContainer {
+  padding: 0 3em;
+  padding-top: 0 !important;
 }
 
 .recipeLeftSide {
@@ -12,10 +17,26 @@
   justify-content: center;
 }
 
+.viewMealContainer .profileColumnLeft button {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.viewMealContainer .profileColumnLeft {
+  text-align: center;
+}
+
+.profileMealTitle {
+  font-size: x-large;
+}
+
 .recipeRightSide {
   height: 100%;
   width: 65%;
-  padding: 6em 1em 0em 0em;
+  padding: 6em 1em 0 0;
+  overflow: scroll;
   position: fixed;
   right: 0;
   top: 0;
@@ -81,7 +102,7 @@
   border-radius: 1em;
   margin: 0em;
   margin-bottom: 1em;
-  font-size: smaller;
+  font-size: x-small;
   border: 2px solid lightgray;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.25);
@@ -118,7 +139,7 @@
   transition: all 0.7s ease-in;
 }
 
-.saveRecipeBtn {
+.saveRecipeBtn, .deleteRecipeBtn {
   width: 60%;
   align-items: center;
   justify-content: center;
@@ -136,4 +157,15 @@
   background-color: lightgray;
   border-radius: 2em;
   transition: all 0.7s ease-in;
+}
+
+.viewMealContainer .profileColumnLeft img {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.viewMealContainer .recipeRightSide .userMealsList {
+  width: 100%;
+  margin: 0;
+  height: 3000px;
 }

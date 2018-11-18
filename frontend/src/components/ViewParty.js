@@ -59,6 +59,9 @@ class ViewParty extends Component {
             </div>
           )}
             </ul>
+            <div className="createNewMealBtn">
+              <Link to={"/" + user.id + "/parties/" + party._id}>Create A New Meal</Link>
+            </div>
         </div>
 
         <div className="profileColumnRight">

@@ -102,12 +102,12 @@ class NewParty extends Component {
 
 NewParty.propTypes = {
   postNewParty: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  members: state.members
+  members: state.members,
 });
 
 export default connect(mapStateToProps, { postNewParty })(withRouter(NewParty));

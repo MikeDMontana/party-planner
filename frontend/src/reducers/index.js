@@ -5,6 +5,7 @@ import addNewMemberReducer from './addNewMemberReducer';
 import partyIsSelectedReducer from './partyIsSelectedReducer';
 import recipeIsSelectedReducer from './recipeIsSelectedReducer';
 import mealIsSelectedReducer from './mealIsSelectedReducer';
+import getAllPartiesReducer from './getAllPartiesReducer';
 
 export default combineReducers({
   errors: errorReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   members: addNewMemberReducer,
   party: partyIsSelectedReducer,
   recipe: recipeIsSelectedReducer,
-  meal: mealIsSelectedReducer
+  meal: mealIsSelectedReducer,
+  allParties: getAllPartiesReducer
 });

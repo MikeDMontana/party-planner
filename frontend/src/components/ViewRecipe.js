@@ -29,6 +29,7 @@ class ViewRecipe extends Component {
       ingredients: this.state.ingredients,
       recipeLink: this.state.recipeLink,
       recipeImage: this.state.recipeImage,
+      healthLabels: this.state.healthLabels,
       upvotes: 0,
       downvotes: 0
     }
