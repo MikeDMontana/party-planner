@@ -75,7 +75,13 @@ class Profile extends Component {
     return(
       <div className="profileContainer">
         <div className="profileColumnLeft">
-          <h2 className="profilePartiesTitle">Parties<span className="partiesLengthMeta">{' (' + user.parties.length + ') total'}</span></h2>
+          <h2 className="profilePartiesTitle">
+            <div>
+              Parties
+              <span className="partiesLengthMeta">{' (' + user.parties.length + ') total'}</span>
+            </div>
+            <button className="refreshBtn" onClick={this.refreshPage}>Refresh List</button>
+          </h2>
           {this.displayAllParties()}
         </div>
 
@@ -94,7 +100,6 @@ class Profile extends Component {
           + user.date.charAt(8) + user.date.charAt(9) + '/'
           + user.date.charAt(2) + user.date.charAt(3)}
           </p>
-          <button onClick={this.refreshPage}>Refresh List</button>
         </div>
       </div>
     );

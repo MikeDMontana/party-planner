@@ -20,6 +20,8 @@
   text-transform: uppercase;
   border-bottom: 2px solid #1b1464;
   width: 80%;
+  display:flex;
+  justify-content: space-between;
 }
 
 .profileColumnRight {
@@ -204,4 +206,28 @@
   background-color: lightgray;
   border-radius: 2em;
   transition: all 0.7s ease-in;
+}
+
+.refreshBtn {
+text-align: center;
+-ms-flex-align: center;
+-ms-flex-pack: center;
+padding: .6em;
+border: 2px solid #004d10;
+color: #004d10;
+font-weight: 500;
+text-transform: uppercase;
+font-size: 12px;
+cursor: pointer;
+-webkit-transition: all 0.7s ease-in;
+-o-transition: all 0.7s ease-in;
+transition: all 0.7s ease-in;
+background-color: rgba(0, 77, 16, .0);
+}
+
+.refreshBtn:hover {
+  background-color: rgba(0, 77, 16, .7);
+  color: white;
+  border-radius: 2em;
+  transition: all 0.4s ease-in;
 }
